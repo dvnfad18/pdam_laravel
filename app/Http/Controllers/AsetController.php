@@ -1,29 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Admin;
+use App\Models\Aset;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AsetController extends Controller
 {
     public function index() 
     {
-    $admins = Admin::all(); // Retrieve all posts
-    return response()->json(['data' => $admins]);
+    $asets = Aset::all(); // Retrieve all posts
+    return response()->json(['data' => $asets]);
     }
 
     public function store(Request $request)
     {
     $validatedData = $request->validate([
-        'username' => 'required|string',
-        'password' => 'required|string',
-        'nama_adm' => 'required|string',
-        'noTelp' => 'required|string',
+
+        'nama_aset' => 'required|string',
+        'alamat_aset' => 'required|string',
+        'tipe' => 'required|int',
+        'harga' => 'required|int',
     ]);
 
-    $admin = Admin::create($validatedData);
+    $asets = Aset::create($validatedData);
 
-    return response()->json(['message' => 'Admin created successfully', 'data' => $admin], 201);
+    return response()->json(['message' => 'Admin created successfully', 'data' => $asets], 201);
     }   
 
     public function update(Request $request, $idAdmin)
