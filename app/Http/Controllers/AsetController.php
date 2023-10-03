@@ -24,38 +24,38 @@ class AsetController extends Controller
 
     $asets = Aset::create($validatedData);
 
-    return response()->json(['message' => 'Admin created successfully', 'data' => $asets], 201);
+    return response()->json(['message' => 'Aset created successfully', 'data' => $asets], 201);
     }   
 
-    public function update(Request $request, $idAdmin)
+    public function update(Request $request, $idAset)
 {
-    $admin = Admin::find($idAdmin);
+    $asets = Aset::find($idAset);
 
-    if (!$admin) {
-        return response()->json(['message' => 'Admin not found'], 404);
+    if (!$asets) {
+        return response()->json(['message' => 'Aset not found'], 404);
     }
 
     $validatedData = $request->validate([
-        'username' => 'string',
-        'password' => 'string',
-        'nama_adm' => 'string',
-        'noTelp' => 'string',
+        'nama_aset' => 'string',
+        'alamat_aset' => 'string',
+        'tipe' => 'int',
+        'harga' => 'int',
     ]);
 
-    $admin->update($validatedData);
+    $asets->update($validatedData);
 
-    return response()->json(['message' => 'Admin updated successfully', 'data' => $admin]);
+    return response()->json(['message' => 'Aset updated successfully', 'data' => $asets]);
 }
 
-public function destroy($idAdmin)
+public function destroy($idAset)
 {
-    $admin = Admin::find($idAdmin);
+    $asets = Aset::find($idAset);
 
-    if (!$admin) {
-        return response()->json(['message' => 'Admin not found'], 404);
+    if (!$asets) {
+        return response()->json(['message' => 'Aset not found'], 404);
     }
 
-    $admin->delete();
+    $asets->delete();
 
 
 }
