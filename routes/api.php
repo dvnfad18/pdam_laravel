@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AsetController;
+use App\Http\Controllers\CustController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,20 @@ Route::post('/asets/insert', [AsetController::class, 'store']);
 Route::post('/asets/{idAset}', [AsetController::class, 'update']);
 Route::delete('/asets/del/{idAset}', [AsetController::class, 'destroy']);
 // ===================== ASET ROUTE END=================
+
+// ===================== CUST ROUTE START================= 
+Route::get('/cust', [CustController::class, 'index']);
+Route::post('/cust/insert', [CustController::class, 'store']);
+Route::post('/cust/{idCust}', [CustController::class, 'update']);
+Route::delete('/cust/del/{idCust}', [CustController::class, 'destroy']);
+// ===================== CUST ROUTE END=================
+
+// ===================== TRANSAKSI ROUTE START================= 
+Route::get('/trans', [TransaksiController::class, 'index']);
+Route::post('/trans/insert', [TransaksiController::class, 'store']);
+Route::post('/trans/{idTrans}', [TransaksiController::class, 'update']);
+Route::delete('/trans/del/{idTrans}', [TransaksiController::class, 'destroy']);
+// ===================== TRANSAKSI ROUTE END=================
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

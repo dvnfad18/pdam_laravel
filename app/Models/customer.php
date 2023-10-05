@@ -13,5 +13,6 @@ class customer extends Model
         'namaCust',
         'no_telp',
         'email_Cust',
-        'password_Cust', ];
+        'password_Cust',
+        'alamat' ];
 }

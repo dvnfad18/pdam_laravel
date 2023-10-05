@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('waktu_awal');
             $table->string('waktu_akhir');
             $table->string('jaminan');
-            $table->integer('dp');
+            $table->integer('dp')->nullable();
             $table->integer('total_bayar');
             $table->string('bukti_jaminan');
+            $table->string('bukti_bayar');
             $table->unsignedBigInteger('status');
 
             // Define foreign key constraints
