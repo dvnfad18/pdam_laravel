@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 class WebAdminController extends Controller
 {
 
-public function index()
+public function index(Request $request)
 {
-    $data = Admin::all();
+    if($request->has('search')){
+        $data = Admin::where('username', 'LIKE', '%'.$request->search.'%')->paginate(5);
+    }else{
+    $data = Admin::paginate(5); }
     return view('admin', compact('data'));
     
 }
