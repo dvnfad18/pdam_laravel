@@ -13,6 +13,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +171,7 @@
         @yield('content')
         <!-- End Content -->
         
-      <footer class="footer pt-3  ">
+      <footer class="footer pt-3">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">

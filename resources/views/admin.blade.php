@@ -13,14 +13,27 @@
 
 @section('content')
 
-    <div class="container-fluid py-4">
+    {{-- <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Tabel Admin</h6>
             </div>
+
             <div class="card-body px-0 pt-0 pb-2">
+
+              <div class="pb-3">
+                <form class="d-flex" action="" method="get">
+                    <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                    <button class="btn btn-secondary" type="submit">Cari</button>
+                </form>
+              </div>
+
+              <div class="pb-3">
+                <a href='' class="btn btn-primary">+ Tambah Data</a>
+            </div>
+
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
@@ -29,6 +42,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">username</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">password</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -40,6 +54,9 @@
                      <td>{{$item->username}}</td>
                      <td>{{$item->password}}</td>
                      <td>{{$item->nama_adm}}</td>
+                     <td>
+                      update delete
+                     </td>
                     </tr>
                      @endforeach
                       @else
@@ -53,5 +70,66 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
+
+      <body class="bg-light">
+        <main class="container">
+            <!-- START DATA -->
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                    <!-- FORM PENCARIAN -->
+                    <div class="pb-3">
+                      <form class="d-flex" action="" method="get">
+                          <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                          <button class="btn btn-secondary" type="submit">Cari</button>
+                      </form>
+                    </div>
+                    
+                    <!-- TOMBOL TAMBAH DATA -->
+                    <div class="pb-3">
+                      <a href='admintambah' class="btn btn-primary">+ Tambah Data</a>
+                    </div>
+                    
+                    <div class="pb-3">
+                      @if($message = Session::get('success'))
+                       <div class="alert alert-succes" role="alert" >
+                        {{$message}}
+                       </div>
+                      @endif
+                    </div>
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">id</th>
+                                <th class="col-md-3">username</th>
+                                <th class="col-md-4">password</th>
+                                <th class="col-md-2">nama</th>
+                                <th class="col-md-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @if($data->count() > 0)
+                          @foreach($data as $item)
+                          <tr>
+                            {{-- <th scope="item">{{$item}}</th> --}}
+                           <td>{{$item->idAdmin}}</td>
+                           <td>{{$item->username}}</td>
+                           <td>{{$item->password}}</td>
+                           <td>{{$item->nama_adm}}</td>
+                           <td>
+                            <a href="/tampildata/{{$item->idAdmin}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/delete/{{$item->idAdmin}}" class="btn btn-danger btn-sm">Delete</a>
+                           </td>
+                          </tr>
+                           @endforeach
+                            @else
+                                <p>Tidak ada data.</p>
+                            @endif
+                        </tbody>
+                    </table>
+              </div>
+              <!-- AKHIR DATA -->
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      </body>
 @endsection

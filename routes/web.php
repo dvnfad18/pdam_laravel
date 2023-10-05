@@ -42,7 +42,14 @@ Route::get('aset', function () {
     return view('aset');
 });
 
-Route::get('/admin', [WebAdminController::class, 'index']);
+Route::get('/admin', [WebAdminController::class, 'index'])->name('admin');
+Route::get('/admintambah', [WebAdminController::class, 'tambah'])->name('tambahadmin');
+Route::post('/insertdata', [WebAdminController::class, 'insert'])->name('insertdata');
+Route::get('/tampildata/{idAdmin}', [WebAdminController::class, 'tampil'])->name('tampildata');
+Route::post('/updatedata/{idAdmin}', [WebAdminController::class, 'update'])->name('updatedata');
+Route::get('/delete/{idAdmin}', [WebAdminController::class, 'delete'])->name('deletedata');
+
+
 Route::get('/customer', [WebCustomerController::class, 'index']);
 
 Route::get('profil', function () {

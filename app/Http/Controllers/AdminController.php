@@ -27,7 +27,7 @@ class AdminController extends Controller
     }   
 
     public function update(Request $request, $idAdmin)
-{
+    {
     $admin = Admin::find($idAdmin);
 
     if (!$admin) {
