@@ -61,7 +61,7 @@
                            <td>{{$item->password}}</td>
                            <td>{{$item->nama_adm}}</td>
                            <td>
-                            <a href="/tampildata/{{$item->idAdmin}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/tampildata/{{$item->idAdmin}}" class="btn btn-success btn-sm">Edit</a>
                             <a href="/delete/{{$item->idAdmin}}" class="btn btn-danger btn-sm">Delete</a>
                            </td>
                           </tr>

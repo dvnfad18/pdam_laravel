@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebAdminController;
+use App\Http\Controllers\WebAsetController;
 use App\Http\Controllers\WebCustomerController;
+use App\Http\Controllers\WebTransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,8 +51,16 @@ Route::get('/tampildata/{idAdmin}', [WebAdminController::class, 'tampil'])->name
 Route::post('/updatedata/{idAdmin}', [WebAdminController::class, 'update'])->name('updatedata');
 Route::get('/delete/{idAdmin}', [WebAdminController::class, 'delete'])->name('deletedata');
 
+Route::get('/aset', [WebAsetController::class, 'index'])->name('aset');
+Route::get('/asettambah', [WebAsetController::class, 'tambah'])->name('tambahaset');
+Route::post('/asetinsertdata', [WebAsetController::class, 'insert'])->name('asetinsertdata');
+Route::get('/asettampildata/{idAset}', [WebAsetController::class, 'tampil'])->name('asettampildata');
+Route::post('/asetupdatedata/{idAset}', [WebAsetController::class, 'update'])->name('asetupdatedata');
+Route::get('/asetdelete/{idAset}', [WebAsetController::class, 'delete'])->name('asetdeletedata');
 
-Route::get('/customer', [WebCustomerController::class, 'index']);
+Route::get('/customers', [WebCustomerController::class, 'index'])->name('customers');
+
+Route::get('/transaksi', [WebTransaksiController::class, 'prosedur'])->name('transaksi');
 
 Route::get('profil', function () {
     return view('profile');
