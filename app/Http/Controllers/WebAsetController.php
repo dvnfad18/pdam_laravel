@@ -29,7 +29,7 @@ public function insert(Request $request)
 {
     
     Aset::create($request->all()); 
-    return redirect()->route('aset')->with('success','Data Berhasil Ditambahkan');
+    return redirect()->route('admin.aset')->with('success','Data Berhasil Ditambahkan');
 }
 
 public function tampil($idAset)
@@ -43,7 +43,7 @@ public function update(Request $request, $idAset)
 {
    $data = Aset::find($idAset);
    $data->update($request->all());
-   return redirect()->route('aset')->with('success','Data Berhasil Di Update');
+   return redirect()->route('admin.aset')->with('success','Data Berhasil Di Update');
 
 }
 
@@ -51,7 +51,7 @@ public function delete($idAset)
 {
    $data = Aset::find($idAset);
    $data->delete();
-   return redirect()->route('aset')->with('success','Data Berhasil Di  Hapus');
+   return redirect()->route('admin.aset')->with('success','Data Berhasil Di  Hapus');
 
 }
 }

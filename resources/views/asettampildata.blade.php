@@ -13,7 +13,7 @@
 @section('content')
 <body class="bg-light">
   <main class="container">
-  <form action="/asetupdatedata/{{$data->idAset}}" method='POST' enctype="multipart/form-data">
+  <form action="/pdam/asetupdatedata/{{$data->idAset}}" method='POST' enctype="multipart/form-data">
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <div class="mb-3 row">

@@ -36,8 +36,8 @@ Route::get('transaksi', function () {
 
 
 Route::get('aset', function () {
-    return view('aset')->name('aset');
-});
+    return view('aset');
+})->name('aset');
 
 Route::get('/pageadmin', [WebAdminController::class, 'page'])->name('PageAdmin');
 Route::get('/admin', [WebAdminController::class, 'index'])->name('admins');

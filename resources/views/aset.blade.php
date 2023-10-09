@@ -63,8 +63,8 @@
                            <td>{{$item->tipe}}</td>
                            <td>{{$item->harga}}</td>
                            <td>
-                            <a href="/asettampildata/{{$item->idAset}}" class="btn btn-success btn-sm">Edit</a>
-                            <a href="/asetdelete/{{$item->idAset}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="/pdam/asettampildata/{{$item->idAset}}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="/pdam/asetdelete/{{$item->idAset}}" class="btn btn-danger btn-sm">Delete</a>
                            </td>
                           </tr>
                            @endforeach
