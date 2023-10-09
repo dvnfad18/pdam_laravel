@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class WebCustomerController extends Controller
 {
+    public function page(){
+        return redirect()->route('admin.customers');
+    }
     public function index(Request $request)
 {
     if($request->has('search')){

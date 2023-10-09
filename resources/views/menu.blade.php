@@ -16,7 +16,7 @@
   
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="{{url('home')}}">
+            <a class="nav-link active" href="{{route('admin.dashboard')}}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
               </div>
@@ -25,7 +25,7 @@
           </li>
   
           <li class="nav-item">
-            <a class="nav-link " href="{{url('transaksi')}}">
+            <a class="nav-link " href="{{route('admin.transaksi')}}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
               </div>
@@ -34,7 +34,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{url('customers')}}">
+            <a class="nav-link " href="{{route('admin.PageCustomers')}}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-app text-info text-sm opacity-10"></i>
               </div>
@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{url('aset')}}">
+            <a class="nav-link " href="{{route('admin.PageAset')}}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
               </div>
@@ -52,7 +52,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link " href="{{url('admin')}}">
+            <a class="nav-link " href="{{route('admin.PageAdmin')}}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
               </div>
@@ -88,6 +88,15 @@
                 <i class="ni ni-collection text-info text-sm opacity-10"></i>
               </div>
               <span class="nav-link-text ms-1">Sign Up</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="{{route('admin.actionlogout')}}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-collection text-info text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Log Out</span>
             </a>
           </li>
         </ul>

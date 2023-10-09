@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WebAdminController extends Controller
 {
-
+    public function page()
+    {
+        return redirect()->route('admin.admins');
+    }
 public function index(Request $request)
 {
     if($request->has('search')){
-        $data = Admin::where('username', 'LIKE', '%'.$request->search.'%')->paginate(5);
+        $data = User::where('username', 'LIKE', '%'.$request->search.'%')->paginate(5);
     }else{
-    $data = Admin::paginate(5); }
+    $data = User::paginate(5); }
     return view('admin', compact('data'));
     
 }

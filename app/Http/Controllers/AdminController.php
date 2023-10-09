@@ -1,37 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    
     public function index() 
     {
-    $admins = Admin::all(); // Retrieve all posts
-    return response()->json(['data' => $admins]);
+    $users = User::all(); // Retrieve all posts
+    return response()->json(['data' => $users]);
     }
 
     public function store(Request $request)
     {
     $validatedData = $request->validate([
+        'name' => 'required|string',
         'username' => 'required|string',
         'password' => 'required|string',
-        'nama_adm' => 'required|string',
         'noTelp' => 'required|string',
     ]);
 
-    $admin = Admin::create($validatedData);
+    $user = User::create($validatedData);
 
-    return response()->json(['message' => 'Admin created successfully', 'data' => $admin], 201);
+    return response()->json(['message' => 'user created successfully', 'data' => $user], 201);
     }   
 
-    public function update(Request $request, $idAdmin)
+    public function update(Request $request, $idUser)
     {
-    $admin = Admin::find($idAdmin);
+    $user = user::find($idUser);
 
-    if (!$admin) {
-        return response()->json(['message' => 'Admin not found'], 404);
+    if (!$user) {
+        return response()->json(['message' => 'user not found'], 404);
     }
 
     $validatedData = $request->validate([
@@ -41,20 +42,20 @@ class AdminController extends Controller
         'noTelp' => 'string',
     ]);
 
-    $admin->update($validatedData);
+    $user->update($validatedData);
 
-    return response()->json(['message' => 'Admin updated successfully', 'data' => $admin]);
+    return response()->json(['message' => 'user updated successfully', 'data' => $user]);
 }
 
-public function destroy($idAdmin)
+public function destroy($iduser)
 {
-    $admin = Admin::find($idAdmin);
+    $user = User::find($iduser);
 
-    if (!$admin) {
-        return response()->json(['message' => 'Admin not found'], 404);
+    if (!$user) {
+        return response()->json(['message' => 'user not found'], 404);
     }
 
-    $admin->delete();
+    $user->delete();
 
 
 }

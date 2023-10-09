@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class WebAsetController extends Controller
 {
+    public function page()
+    {
+        return redirect()->route('admin.aset');
+    }
+    
     public function index(Request $request)
 {
     if($request->has('search')){

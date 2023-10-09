@@ -44,10 +44,10 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="col-md-1">id</th>
-                                <th class="col-md-3">username</th>
-                                <th class="col-md-4">password</th>
-                                <th class="col-md-2">nama</th>
+                                <th class="col-md-1">ID</th>
+                                <th class="col-md-3">Username</th>
+                                <th class="col-md-2">Nama</th>
+                                <th class="col-md-2">No Telepon</th>
                                 <th class="col-md-2">Action</th>
                             </tr>
                         </thead>
@@ -56,10 +56,10 @@
                           @foreach($data as $item)
                           <tr>
                             {{-- <th scope="item">{{$item}}</th> --}}
-                           <td>{{$item->idAdmin}}</td>
+                           <td>{{$item->id}}</td>
                            <td>{{$item->username}}</td>
-                           <td>{{$item->password}}</td>
-                           <td>{{$item->nama_adm}}</td>
+                           <td>{{$item->name}}</td>
+                           <td>{{$item->noTelp}}</td>
                            <td>
                             <a href="/tampildata/{{$item->idAdmin}}" class="btn btn-success btn-sm">Edit</a>
                             <a href="/delete/{{$item->idAdmin}}" class="btn btn-danger btn-sm">Delete</a>
