@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class WebAdminController extends Controller
 {
@@ -26,31 +27,42 @@ public function tambah()
 
 public function insert(Request $request)
 {
-    
-    Admin::create($request->all()); 
-    return redirect()->route('admin')->with('success','Data Berhasil Ditambahkan');
+    $request->validate([
+        'name' => 'required',
+        'username' => 'required',
+        'password' => 'required',
+        'noTelp' => 'required',
+    ]);
+
+    $validatedData['name'] = $request->name;
+    $validatedData['username'] = $request->username;
+    $validatedData['password'] =Hash::make($request->password);
+    $validatedData['noTelp'] = $request->noTelp;
+
+    User::create($validatedData); 
+    return redirect()->route('admin.admins')->with('success','Data Berhasil Ditambahkan');
 }
 
 public function tampil($idAdmin)
 {
-   $data = Admin::find($idAdmin);
+   $data = User::find($idAdmin);
    return view('admintampildata', compact('data'));
 
 }
 
 public function update(Request $request, $idAdmin)
 {
-   $data = Admin::find($idAdmin);
+   $data = User::find($idAdmin);
    $data->update($request->all());
-   return redirect()->route('admin')->with('success','Data Berhasil Di Update');
+   return redirect()->route('admin.admins')->with('success','Data Berhasil Di Update');
 
 }
 
 public function delete($idAdmin)
 {
-   $data = Admin::find($idAdmin);
+   $data = User::find($idAdmin);
    $data->delete();
-   return redirect()->route('admin')->with('success','Data Berhasil Di  Hapus');
+   return redirect()->route('admin.admins')->with('success','Data Berhasil Di  Hapus');
 }
 }
 

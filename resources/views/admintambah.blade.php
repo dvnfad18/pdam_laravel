@@ -13,15 +13,10 @@
 @section('content')
 <body class="bg-light">
   <main class="container">
-  <form action="/insertdata" method='POST' enctype="multipart/form-data">
+  <form action="{{route('admin.insertdata')}}" method='POST' enctype="multipart/form-data">
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <div class="mb-3 row">
-            <label for="idAdmin" class="col-sm-2  col-form-label">id</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" name='idAdmin' id="nim">
-            </div>
-        </div>
+    
         <div class="mb-3 row">
             <label for="nama" class="col-sm-2 col-form-label">username</label>
             <div class="col-sm-10">
@@ -35,9 +30,9 @@
             </div>
         </div>
         <div class="mb-3 row">
-          <label for="jurusan" class="col-sm-2 col-form-label">nama_adm</label>
+          <label for="jurusan" class="col-sm-2 col-form-label">nama</label>
           <div class="col-sm-10">
-              <input type="text" class="form-control" name='nama_adm' id="jurusan">
+              <input type="text" class="form-control" name='name' id="jurusan">
           </div>
         <div class="mb-3 row">
             <label for="jurusan" class="col-sm-2 col-form-label">noTelp</label>
@@ -47,7 +42,7 @@
       </div>
         <div class="mb-3 row">
             <label for="jurusan" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button></div>
+            <div class="col-sm-10"><button type="submit" class="btn btn-primary">SIMPAN</button></div>
         </div>
       </form>
     </div>
