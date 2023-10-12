@@ -34,6 +34,10 @@ return [
     */
 
     'guard' => ['web'],
+    'models'=> [
+        'personal_access_token'=>\Laravel\Sanctum\PersonalAccessToken::class,
+        'api_token'=>\App\Models\Customer::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------

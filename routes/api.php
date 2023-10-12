@@ -35,6 +35,7 @@ Route::delete('/asets/del/{idAset}', [AsetController::class, 'destroy']);
 // ===================== ASET ROUTE END=================
 
 // ===================== CUST ROUTE START================= 
+Route::post('/login', [CustController::class, 'login']);
 Route::get('/cust', [CustController::class, 'index']);
 Route::post('/cust/insert', [CustController::class, 'store']);
 Route::post('/cust/{idCust}', [CustController::class, 'update']);
