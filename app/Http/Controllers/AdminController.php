@@ -21,7 +21,7 @@ class AdminController extends Controller
         'password' => 'required|string',
         'noTelp' => 'required|string',
     ]);
-
+    
     $user = User::create($validatedData);
 
     return response()->json(['message' => 'user created successfully', 'data' => $user], 201);

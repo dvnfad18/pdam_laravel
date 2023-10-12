@@ -61,8 +61,8 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->noTelp }}</td>
                                     <td>
-                                        <a href="/tampildata/{{ $item->idAdmin }}" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="/delete/{{ $item->idAdmin }}" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="/pdam/tampildata/{{ $item->id}}" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="/pdam/delete/{{ $item->id }}" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
