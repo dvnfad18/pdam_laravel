@@ -27,7 +27,7 @@
                     <!-- FORM PENCARIAN -->
                     <div class="row g-3 align-items-center">
                       <div class="col-auto">
-                        <form action="/aset" method="GET">
+                        <form action="/pdam/aset" method="GET">
                           <input type="search" id="input" name="search" class="form-control" aria-describedby="password">
                         </form>
                       </div>

@@ -79,7 +79,7 @@
                     <!-- FORM PENCARIAN -->
                     <div class="row g-3 align-items-center">
                       <div class="col-auto">
-                        <form action="/customers" method="GET">
+                        <form action="/pdam/customers" method="GET">
                           <input type="search" id="input" name="search" class="-control" aria-describedby="password">
                         </form>
                       </div>
