@@ -24,4 +24,9 @@ class WebCustomerController extends Controller
     // return view('admin', compact('data'));
     
 }
+// public function count()
+// {
+//     $jumlah_cust = Customer::count(); // Mengambil jumlah pengguna
+//     return view('dashboard', compact('jumlah_cust'));
+// }
 }

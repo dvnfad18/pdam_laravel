@@ -24,24 +24,24 @@
             </div>
         </div> --}}
         <div class="mb-3 row">
-            <label for="nama" class="col-sm-2 col-form-label">username</label>
+            <label for="nama" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name='username' id="nama" value="{{$data->username}}">
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="jurusan" class="col-sm-2 col-form-label">password</label>
+            <label for="jurusan" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name='password' id="jurusan" value="{{$data->password}}">
+                <input type="password" class="form-control" name='password' id="jurusan" value="{{$data->password}}">
             </div>
         </div>
         <div class="mb-3 row">
-          <label for="jurusan" class="col-sm-2 col-form-label">nama</label>
+          <label for="jurusan" class="col-sm-2 col-form-label">Nama</label>
           <div class="col-sm-10">
               <input type="text" class="form-control" name='name' id="jurusan" value="{{$data->name}}">
           </div>
         <div class="mb-3 row">
-            <label for="jurusan" class="col-sm-2 col-form-label">noTelp</label>
+            <label for="jurusan" class="col-sm-2 col-form-label">No Telepon</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name='noTelp' id="jurusan" value="{{$data->noTelp}}">
             </div>

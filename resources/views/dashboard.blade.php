@@ -16,15 +16,16 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card" >
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Transaksi</p>
+                    <a href="{{ route('admin.transaksi') }}">
                     <h5 class="font-weight-bolder">
-                      10
-                    </h5>
+                      {{$jumlah_transaksi}}
+                    </h5></a>
                     {{-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+55%</span>
                       since yesterday
@@ -46,11 +47,12 @@
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
-                  <div class="numbers">
+                  <div class="numbers" >
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Customers</p>
+                    <a href="{{ route('admin.PageCustomers') }}">
                     <h5 class="font-weight-bolder">
-                      10
-                    </h5>
+                      {{$jumlah_cust}}
+                    </h5> </a>
                     {{-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+3%</span>
                       since last week
@@ -74,13 +76,10 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Aset</p>
+                    <a href="{{ route('admin.PageAset') }}">
                     <h5 class="font-weight-bolder">
-                      20
-                    </h5>
-                    {{-- <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
-                    </p> --}}
+                      {{$jumlah_aset}}
+                    </h5> </a>
                   </div>
                 </div>
                 <div class="col-4 text-end">

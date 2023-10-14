@@ -8,6 +8,7 @@ use App\Http\Controllers\WebTransaksiController;
 use App\Http\Controllers\WebProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +26,7 @@ Route::group(['prefix'=>'pdam', 'middleware'=>['auth'], 'as' => 'admin.'], funct
 
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
-
+// Route::get('/dashboard', [HomeController::class, 'count'])->name('dashboardcount');
 //     Route::get('template', function () {
 //     return view('template');
 // });
@@ -40,6 +41,8 @@ Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard'
 //     return view('aset');
 // })->name('aset');
 
+// Route::get('/admincount', [DashboardController::class, 'dashboard'])->name('admindashboard');
+
 Route::get('/pageadmin', [WebAdminController::class, 'page'])->name('PageAdmin');
 Route::get('/admin', [WebAdminController::class, 'index'])->name('admins');
 Route::get('/admintambah', [WebAdminController::class, 'tambah'])->name('tambahadmin');
@@ -47,6 +50,7 @@ Route::post('/insertdata', [WebAdminController::class, 'insert'])->name('insertd
 Route::get('/tampildata/{id}', [WebAdminController::class, 'tampil'])->name('tampildata');
 Route::post('/updatedata/{id}', [WebAdminController::class, 'update'])->name('updatedata');
 Route::get('/delete/{id}', [WebAdminController::class, 'delete'])->name('deletedata');
+
 
 Route::get('/pageaset', [WebAsetController::class, 'page'])->name('PageAset');
 Route::get('/aset', [WebAsetController::class, 'index'])->name('aset');
@@ -58,6 +62,7 @@ Route::get('/asetdelete/{idAset}', [WebAsetController::class, 'delete'])->name('
 
 Route::get('/pagecust', [WebCustomerController::class, 'page'])->name('PageCustomers');
 Route::get('/customers', [WebCustomerController::class, 'index'])->name('customers');
+// Route::get('/countcustomers', [WebCustomerController::class, 'count'])->name('countcustomers');
 
 Route::get('/transaksi', [WebTransaksiController::class, 'prosedur'])->name('transaksi');
 
