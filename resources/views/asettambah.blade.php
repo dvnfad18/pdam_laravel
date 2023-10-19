@@ -34,29 +34,40 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name='tipe' id="jurusan">
                         </div>
-                        <div class="mb-3 row">
-                            <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name='harga' id="jurusan">
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                         <label for="jurusan" class="col-sm-2 col-form-label">Tipe Bangunan</label>
+                         <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example" name="kategori">
+                            <option selected value="1">Gedung</option>
+                            <option value="2">Rumah</option>
+                            <option value="3">Tempat Olahraga</option>
+                        </select>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="image" class="col-sm-2 col-form-label">Unggah Gambar</label>
-                            <img class="img-preview img-fluid">
-                            <div class="col-sm-10">
-                                <input class="form-control" name="image" type="file" id="image" onchange="preImage()">
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                @enderror
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name='harga' id="jurusan">
                         </div>
-                        <div class="mb-3 row">
-                            <label for="jurusan" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10"><button type="submit" class="btn btn-primary"
-                                    name="submit">SIMPAN</button></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="image" class="col-sm-2 col-form-label">Unggah Gambar</label>
+                        <img class="img-preview img-fluid">
+                        <div class="col-sm-10">
+                            <input class="form-control" name="image" type="file" id="image" onchange="preImage()">
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jurusan" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>
+                        </div>
+                    </div>
             </form>
             </div>
         </main>
@@ -65,21 +76,19 @@
         </script>
 
         <script>
-              function preImage(){
-            const image= document.querySelector('#image');
-            const imgPre= document.querySelector('.img-preview');
+            function preImage() {
+                const image = document.querySelector('#image');
+                const imgPre = document.querySelector('.img-preview');
 
-            imgPre.style.display='block';
+                imgPre.style.display = 'block';
 
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
+                const oFReader = new FileReader();
+                oFReader.readAsDataURL(image.files[0]);
 
-            oFReader.onload=function(oFREvent){
-                imgPre.src = oFREvent.target.result;
+                oFReader.onload = function(oFREvent) {
+                    imgPre.src = oFREvent.target.result;
+                }
             }
-        }
         </script>
-</body>
-
-
+    </body>
 @endsection

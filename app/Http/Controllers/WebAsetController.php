@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Aset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WebAsetController extends Controller
 {
@@ -16,7 +17,8 @@ class WebAsetController extends Controller
     if($request->has('search')){
         $data = Aset::where('nama_aset', 'LIKE', '%'.$request->search.'%')->paginate(5);
     }else{
-    $data = Aset::paginate(5); }
+    $data = DB::select('CALL GetAsetData()');}
+    // dd($data);
     return view('aset', compact('data'));
     
 }
@@ -35,7 +37,8 @@ public function insert(Request $request)
         'tipe' => 'required',
         'harga'=> 'required',
         'image' => 'image|file|max:50000',
-    ]);
+        'kategori' => 'required',
+        ]);
         $data['gambar'] = $request->file('image')->store('gambar-aset');
     Aset::create($data);
     return redirect()->route('admin.aset')->with('success','Data Berhasil Ditambahkan');

@@ -20,6 +20,7 @@ class AsetController extends Controller
         'alamat_aset' => 'required|string',
         'tipe' => 'required|int',
         'harga' => 'required|int',
+        'image' => 'image|file|max:50000',
     ]);
 
     $asets = Aset::create($validatedData);
