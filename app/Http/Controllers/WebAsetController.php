@@ -27,8 +27,17 @@ public function tambah()
 
 public function insert(Request $request)
 {
+    // return $request->file('image')->store('gambar-aset');
     
-    Aset::create($request->all()); 
+    $data = $request->validate([
+        'nama_aset' => 'required',
+        'alamat_aset' => 'required',
+        'tipe' => 'required',
+        'harga'=> 'required',
+        'image' => 'image|file|max:50000',
+    ]);
+        $data['gambar'] = $request->file('image')->store('gambar-aset');
+    Aset::create($data);
     return redirect()->route('admin.aset')->with('success','Data Berhasil Ditambahkan');
 }
 

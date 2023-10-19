@@ -19,7 +19,7 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
 
 Route::group(['prefix'=>'pdam', 'middleware'=>['auth'], 'as' => 'admin.'], function(){
