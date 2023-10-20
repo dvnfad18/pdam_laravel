@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tipeAset extends Model
+class kategori extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'idTipe';
+    protected $primaryKey = 'idKategori';
     protected $fillable = [
-        'tipe'
+        'kategori',
     ];
 }

@@ -32,17 +32,23 @@
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Tipe</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='tipe' id="jurusan">
+                            <select class="form-select" aria-label="Default select example" name="tipe">
+                                <option value=""><b>--PILIH TIPE--</b></option>
+                                @foreach ($tipe as $tipes)
+                                    <option value="{{ $tipes->idTipe }}">{{ $tipes->tipe }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                         <label for="jurusan" class="col-sm-2 col-form-label">Tipe Bangunan</label>
-                         <div class="col-sm-10">
+                        <label for="jurusan" class="col-sm-2 col-form-label">Tipe Bangunan</label>
+                        <div class="col-sm-10">
                             <select class="form-select" aria-label="Default select example" name="kategori">
-                            <option selected value="1">Gedung</option>
-                            <option value="2">Rumah</option>
-                            <option value="3">Tempat Olahraga</option>
-                        </select>
+                                <option value=""><b>--PILIH KATEGORI--</b></option>
+                                @foreach ($kategori as $item)
+                                    <option value="{{ $item->idKategori }}">{{ $item->kategori }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
