@@ -34,9 +34,11 @@
                 </div>
 
                 <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
+
+                  {{-- <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle"> --}}
+                    <img  src="/icon/menuicon/transaksi.png" class="icon icon-shape icon-sm">
+                    {{-- <img  src="/icon/menuicon/transaksi.png" class="navbar-brand-img h-50 text-center me-2 d-flex align-items-center justify-content-center" alt="main_logo"> --}}
+                 
                 </div>
               </div>
             </div>
