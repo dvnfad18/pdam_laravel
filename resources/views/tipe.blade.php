@@ -43,10 +43,10 @@
 
                 <table class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
-                            <th class="col-md-3">Tipe</th>
-                            <th class="col-md-3">Action</th>
+                            <th class="col-md-1">Tipe</th>
+                            <th class="col-md-1">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,10 +58,16 @@
                                 <td>{{ $item->tipe }}</td>
                                 
                                 <td>
-                                    <a href="/pdam/tipetampildata/{{ $item->idTipe }}"
+                                    <a href="/pdam/tipetampildata/{{ $item->idTipe }}" >
+                                        <img src="/icon/menuicon/edit.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    <a href="/pdam/tipedelete/{{ $item->idTipe }}"  >
+                                        <img src="/icon/menuicon/delete.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    {{-- <a href="/pdam/tipetampildata/{{ $item->idTipe }}"
                                         class="btn btn-success btn-sm">Edit</a>
                                     <a href="/pdam/tipedelete/{{ $item->idTipe }}" 
-                                        class="btn btn-danger btn-sm">Delete</a>
+                                        class="btn btn-danger btn-sm">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach

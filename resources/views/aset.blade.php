@@ -25,10 +25,10 @@
 
                 <!-- FORM PENCARIAN -->
                 <div class="row g-3 align-items-center">
-                    <div class="col-auto">
+                    <div class="col-3">
                         <form action="/pdam/aset" method="GET">
                             <input type="search" id="input" name="search" class="form-control"
-                                aria-describedby="password">
+                                aria-describedby="password" text="search">
                         </form>
                     </div>
                 </div>
@@ -41,33 +41,40 @@
                     @endif
                 </div>
 
-                <table class="table table-striped">
+                <table class="table table-striped"  >
                     <thead>
-                        <tr>
+                        <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
-                            <th class="col-md-3">nama aset</th>
-                            <th class="col-md-4">alamat</th>
-                            <th class="col-md-2">tipe</th>
-                            <th class="col-md-2">kategori</th>
-                            <th class="col-md-2">harga</th>
-                            <th class="col-md-2">action</th>
+                            <th class="col-md-1">nama aset</th>
+                            <th class="col-md-1">alamat</th>
+                            <th class="col-md-1">tipe</th>
+                            <th class="col-md-1">kategori</th>
+                            <th class="col-md-1">harga</th>
+                            <th class="col-md-1">action</th>
+                         
+                            
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach ($data as $item)
-                            <tr>
+                            <tr >
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
                                 <td>{{ $item->nama_aset }}</td>
                                 <td>{{ $item->alamat_aset }}</td>
                                 <td>{{ $item->tipe }}</td>
                                 <td>{{ $item->kategori }}</td>
+                                {{-- <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"></td> --}}
                                 <td>{{ $item->harga }}</td>
                                 <td>
-                                    <a href="/pdam/asettampildata/{{ $item->idAset }}"
-                                        class="btn btn-success btn-sm">Edit</a>
-                                    <a href="/pdam/asetdelete/{{ $item->idAset }}" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="/pdam/asettampildata/{{ $item->idAset }}"  >
+                                        <img src="/icon/menuicon/edit.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    <a href="/pdam/asetdelete/{{ $item->idAset }}"  >
+                                        <img src="/icon/menuicon/delete.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    {{-- <a href="/pdam/asettampildata/{{ $item->idAset }}" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="/pdam/asetdelete/{{ $item->idAset }}" class="btn btn-danger btn-sm">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach

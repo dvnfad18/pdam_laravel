@@ -43,10 +43,10 @@
 
                 <table class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
-                            <th class="col-md-3">Kategori</th>
-                            <th class="col-md-3">Action</th>
+                            <th class="col-md-1">Kategori</th>
+                            <th class="col-md-1">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,10 +58,16 @@
                                 <td>{{ $item->kategori }}</td>
                                 
                                 <td>
-                                    <a href="/pdam/kategoritampildata/{{ $item->idKategori }}"
+                                    <a href="/pdam/kategoritampildata/{{ $item->idKategori }}" >
+                                        <img src="/icon/menuicon/edit.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    <a href="/pdam/kategoridelete/{{ $item->idKategori }}"   >
+                                        <img src="/icon/menuicon/delete.png" style="max-height: 20px; max-width: 20px">
+                                    </a>
+                                    {{-- <a href="/pdam/kategoritampildata/{{ $item->idKategori }}"
                                         class="btn btn-success btn-sm">Edit</a>
                                     <a href="/pdam/kategoridelete/{{ $item->idKategori }}" 
-                                        class="btn btn-danger btn-sm">Delete</a>
+                                        class="btn btn-danger btn-sm">Delete</a> --}}
                                 </td>
                             </tr>
                         @endforeach
