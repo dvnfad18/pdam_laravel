@@ -66,11 +66,11 @@ class TipeController extends Controller
 
     }
 
-    // public function dropdown()
-    // {
+    public function dropdown()
+    {
 
-    //     $tipe = tipeAset::all();
-    //     $kategori = kategori::all();
-    //     return view('asettampildata', compact('tipe', 'kategori'));
-    // }
+        $tipe = tipeAset::all();
+        $kategori = kategori::all();
+        return view('tipetambah', compact('tipe', 'kategori'));
+    }
 }

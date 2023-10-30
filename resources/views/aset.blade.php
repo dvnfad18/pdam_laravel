@@ -40,23 +40,25 @@
                     @endif
                 </div>
 
-                <table class="table-responsive" s  >
-                    <thead >
+                {{-- "table table-bordered dataTable" --}}
+
+                <table class="table-responsive"  >
+                    <thead style="font-size: 10pt">
                         <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
                             <th class="col-md-2">Gambar</th>
-                            <th class="col-md-2">Nama Aset</th>
+                            <th class="col-md-1">Nama Aset</th>
                             <th class="col-md-2">Deskripsi</th>
-                            <th class="col-md-2">Alamat</th>
-                            <th class="col-md-2">Tipe</th>
-                            <th class="col-md-2">Kategori</th>
-                            <th class="col-md-2">Harga</th>
-                            <th class="col-md-2">Action</th>
+                            <th class="col-md-1">Alamat</th>
+                            <th class="col-md-1">Tipe</th>
+                            <th class="col-md-1">Kategori</th>
+                            <th class="col-md-1">Harga</th>
+                            <th class="col-md-4">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-bordered dataTable">
                         @foreach ($data as $item)
-                            <tr >
+                            <tr style="font-size: 10pt">
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
                                 <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>

@@ -51,7 +51,7 @@
                             <th class="col-md-2">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-bordered">
                         @if ($data->count() > 0)
                             @foreach ($data as $item)
                                 <tr >

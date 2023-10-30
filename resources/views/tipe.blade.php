@@ -41,18 +41,17 @@
                     @endif
                 </div>
 
-                <table class="table-responsive" style="width: 450px">
-                    <thead>
-                        <tr style="background-color: rgb(196, 215, 243)">
+                <table class="table-responsive" style="width: 450px ">
+                    <thead style="font-size: 12pt">
+                        <tr style="background-color: rgb(196, 215, 243) ">
                             <th class="col-md-1">id</th>
                             <th class="col-md-3">Tipe</th>
                             <th class="col-md-3">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody class="table-bordered">
                         @foreach ($data as $item)
-                            <tr>
+                            <tr style="font-size: 12pt">
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idTipe }}</td>
                                 <td>{{ $item->tipe }}</td>
