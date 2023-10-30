@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kategori;
 use Illuminate\Http\Request;
 
 class KategoriiController extends Controller
 {
     public function index() 
     {
-    $kategori = Kategori::all(); // Retrieve all posts
+    $kategori = kategori::all(); // Retrieve all posts
     return response()->json(['data' => $kategori]);
     }
 

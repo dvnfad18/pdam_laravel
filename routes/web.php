@@ -60,6 +60,7 @@ Route::group(['prefix' => 'pdam', 'middleware' => ['auth'], 'as' => 'admin.'], f
     Route::get('/asettambah', [WebAsetController::class, 'tambah'])->name('tambahaset');
     Route::get('/asettambah', [WebAsetController::class, 'dropdown'])->name('dropdown');
     Route::post('/asetinsertdata', [WebAsetController::class, 'insert'])->name('asetinsertdata');
+    // Route::get('/asettampildata/{idAset}', [WebAsetController::class, 'dropdown'])->name('asettampildata');
     Route::get('/asettampildata/{idAset}', [WebAsetController::class, 'tampil'])->name('asettampildata');
     Route::post('/asetupdatedata/{idAset}', [WebAsetController::class, 'update'])->name('asetupdatedata');
     Route::get('/asetdelete/{idAset}', [WebAsetController::class, 'delete'])->name('asetdeletedata');

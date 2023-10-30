@@ -62,7 +62,7 @@
                                 value="{{ $data->deskripsi }}">
                         </div>
                     </div>
-                    
+
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
@@ -73,21 +73,37 @@
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Tipe</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name='tipe' id="jurusan"
-                                value="{{ $data->tipe }}">
+                            <select class="form-select" aria-label="Default select example" name="tipe">
+                                <option value=""><b>--PILIH TIPE--</b></option>
+                                @foreach ($tipe as $tipes)
+                                    <option value="{{ $tipes->idTipe }}" {{ $tipes->idTipe === old('tipe') ? 'selected' : '' }}>{{ $tipes->tipe }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name='harga' id="jurusan"
-                                    value="{{ $data->harga }}">
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jurusan" class="col-sm-2 col-form-label">Tipe Bangunan</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example" name="kategori">
+                                <option value=""><b>--PILIH KATEGORI--</b></option>
+                                @foreach ($kategori as $item)
+                                    <option value="{{ $item->idKategori }}">{{ $item->kategori }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="mb-3 row">
-                            <label for="jurusan" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10"><button type="submit" class="btn btn-primary"
-                                    name="submit">SIMPAN</button></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name='harga' id="jurusan"
+                                value="{{ $data->harga }}">
                         </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jurusan" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>
+                        </div>
+                    </div>
             </form>
             </div>
         </main>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kategori;
 use App\Models\tipeAset;
 
 use Illuminate\Http\Request;
@@ -65,11 +66,11 @@ class TipeController extends Controller
 
     }
 
-    public function dropdown()
-    {
+    // public function dropdown()
+    // {
 
-        $tipe = tipeAset::all();
-        // $kategori = kategori::all();
-        return view('tipetambah', compact('tipe'));
-    }
+    //     $tipe = tipeAset::all();
+    //     $kategori = kategori::all();
+    //     return view('asettampildata', compact('tipe', 'kategori'));
+    // }
 }

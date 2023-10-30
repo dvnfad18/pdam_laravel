@@ -50,10 +50,15 @@ class WebAsetController extends Controller
         return redirect()->route('admin.aset')->with('success', 'Data Berhasil Ditambahkan');
     }
 
-    public function tampil($idAset)
+    public function tampil($idAset, Request $request)
     {
+        $inputanUser = $request->input('tipe'); // Gantilah ini dengan nama field pada formulir Anda
+
         $data = Aset::find($idAset);
-        return view('asettampildata', compact('data'));
+        $tipe = tipeAset::all();
+        $tipe_terpilih = tipeAset::where('tipe', $inputanUser)->first(); // Anda dapat mengganti ini sesuai dengan cara Anda mendapatkan data terpilih
+        $kategori = kategori::all();
+        return view('asettampildata', compact('data','tipe','kategori', 'tipe_terpilih'));
 
     }
 
