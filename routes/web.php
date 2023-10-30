@@ -64,6 +64,24 @@ Route::group(['prefix' => 'pdam', 'middleware' => ['auth'], 'as' => 'admin.'], f
     Route::post('/asetupdatedata/{idAset}', [WebAsetController::class, 'update'])->name('asetupdatedata');
     Route::get('/asetdelete/{idAset}', [WebAsetController::class, 'delete'])->name('asetdeletedata');
 
+    Route::get('/pagetipe', [TipeController::class, 'page'])->name('PageTipe');
+    Route::get('/tipe', [TipeController::class, 'index'])->name('tipe');
+    Route::get('/tipetambah', [TipeController::class, 'tambah'])->name('tambahtipe');
+    Route::get('/tipetambah', [TipeController::class, 'dropdown'])->name('dropdown');
+    Route::post('/tipeinsertdata', [TipeController::class, 'insert'])->name('tipeinsertdata');
+    Route::get('/tipetampildata/{idTipe}', [TipeController::class, 'tampil'])->name('tipetampildata');
+    Route::post('/tipeupdatedata/{idTipe}', [TipeController::class, 'update'])->name('tipeupdatedata');
+    Route::get('/tipedelete/{idTipe}', [TipeController::class, 'delete'])->name('tipedeletedata');
+
+    Route::get('/pagekategori', [KategoriController::class, 'page'])->name('PageKategori');
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+    Route::get('/kategoritambah', [KategoriController::class, 'tambah'])->name('tambahKategori');
+    Route::get('/kategoritambah', [KategoriController::class, 'dropdown'])->name('dropdown');
+    Route::post('/kategoriinsertdata', [KategoriController::class, 'insert'])->name('kategoriinsertdata');
+    Route::get('/kategoritampildata/{idKategori}', [KategoriController::class, 'tampil'])->name('kategoritampildata');
+    Route::post('/kategoriupdatedata/{idKategori}', [KategoriController::class, 'update'])->name('kategoriupdatedata');
+    Route::get('/kategoridelete/{idKategori}', [KategoriController::class, 'delete'])->name('kategorideletedata');
+
     Route::get('/pagecust', [WebCustomerController::class, 'page'])->name('PageCustomers');
     Route::get('/customers', [WebCustomerController::class, 'index'])->name('customers');
     // Route::get('/countcustomers', [WebCustomerController::class, 'count'])->name('countcustomers');

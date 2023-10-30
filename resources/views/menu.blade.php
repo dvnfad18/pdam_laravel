@@ -14,94 +14,81 @@
       {{-- <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main"> --}}
   
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="{{route('admin.dashboard')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-              </div>
+          <li class="nav-item ">
+            <a class="nav-link {{set_active('admin.dashboard')}}" href="{{route('admin.dashboard')}}">
+              <img  src="/icon/menuicon/dashboard.png" class="navbar-brand-img h-50 2em text-center me-2"
+              style="max-height: 30px; max-width: 25px" alt="main_logo">
               <span class="nav-link-text ms-1">Dashboard</span>
             </a>
-          </li>
+          {{-- </li>{{ request()->routeIs('home') ? 'active' : '' }}" --}}
   
-          <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.transaksi')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-              </div>
+          <li class="nav-item ">
+            <a class="nav-link {{set_active('admin.transaksi')}}" href="{{route('admin.transaksi')}}">
+              <img  src="/icon/menuicon/transaksi.png" class="navbar-brand-img h-50 2em text-center me-2" alt="main_logo"
+              style="max-height: 30px; max-width: 25px" >
               <span class="nav-link-text ms-1">Transaksi</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.PageCustomers')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-app text-info text-sm opacity-10"></i>
-              </div>
+            <a class="nav-link {{set_active('admin.customers')}}" href="{{route('admin.customers')}}">
+              <img  src="/icon/menuicon/customers.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
               <span class="nav-link-text ms-1">Customers</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.PageAset')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-              </div>
+            <a class="nav-link {{set_active('admin.aset')}}" href="{{route('admin.aset')}}">
+              <img  src="/icon/menuicon/aset.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
               <span class="nav-link-text ms-1">Aset</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{set_active('admin.tipe')}}" href="{{route('admin.tipe')}}">
+              <img  src="/icon/menuicon/tipe.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
+              <span class="nav-link-text ms-1">Tipe</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{set_active('admin.kategori')}}" href="{{route('admin.kategori')}}">
+              <img  src="/icon/menuicon/kategori.png" class="navbar-brand-img h-50 text-center me-2" alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
+              <span class="nav-link-text ms-1">Kategori</span>
             </a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.PageAdmin')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-              </div>
+            <a class="nav-link {{set_active('admin.admins')}}" href="{{route('admin.admins')}}">
+              <img  src="/icon/menuicon/admin.png" class="navbar-brand-img h-50 text-center me-2" alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
               <span class="nav-link-text ms-1">Admin</span>
             </a>
           </li>
-  
-          <li class="nav-item mt-3">
+
+            <li class="nav-item mt-3">
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
           </li>
-  
-          <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.PageProfile')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Profile</span>
-            </a>
-          </li>
-  
-          <li class="nav-item">
-            <a class="nav-link " href="./views/sign-in.blade.php">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Sign In</span>
-            </a>
-          </li>
-  
-          {{-- <li class="nav-item">
-            <a class="nav-link " href="./pages/sign-up.html">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-collection text-info text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Sign Up</span>
-            </a>
-          </li> --}}
 
           <li class="nav-item">
-            <a class="nav-link " href="{{route('admin.actionlogout')}}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-collection text-info text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Log Out</span>
+            <a class="nav-link" href="{{route('admin.actionlogout')}}">
+              <img  src="/icon/menuicon/sign-out.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
+              style="max-height: 30px; max-width: 25px">
+              <span class="nav-link-text ms-1">Sign Out</span>
             </a>
           </li>
+  
+          {{-- <li class="nav-item mt-3">
+            <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+          </li> --}}
+        
         </ul>
       </div>
     </div>
-    
+
   
       {{-- <div class="sidenav-footer mx-3 ">
         <div class="card card-plain shadow-none" id="sidenavCard">

@@ -154,21 +154,22 @@
                       @endif
                     </div> --}}
                     
-                    <table class="table-responsive table-striped">
+                    <table class="table-responsive">
                         <thead>
-                            <tr>
-                                <th class="col-md-1">id</th>
-                                <th class="col-md-3">nama</th>
-                                <th class="col-md-4">aset</th>
-                                <th class="col-md-2">tipe</th>
-                                <th class="col-md-2">waktu awal</th>
-                                <th class="col-md-2">waktu akhir</th>
-                                <th class="col-md-2">jaminan</th>
-                                <th class="col-md-2">dp</th>
-                                <th class="col-md-2">total bayar</th>
-                                <th class="col-md-2">bukti jaminan</th>
-                                <th class="col-md-2">bukti bayar</th>
-                                <th class="col-md-2">status</th>
+                            <tr style="background-color: rgb(196, 215, 243)">
+                                <th class="col-md-1">Id</th>
+                                <th class="col-md-1">Nama</th>
+                                <th class="col-md-1">Aset</th>
+                                <th class="col-md-1">Tipe</th>
+                                <th class="col-md-1">Waktu awal</th>
+                                <th class="col-md-1">Waktu akhir</th>
+                                <th class="col-md-1">Jaminan</th>
+                                <th class="col-md-1">Dp</th>
+                                <th class="col-md-1">Total bayar</th>
+                                <th class="col-md-1">Bukti jaminan</th>
+                                <th class="col-md-1">Bukti bayar</th>
+                                <th class="col-md-1">Status</th>
+                                
                                 {{-- <th class="col-md-2">Action</th> --}}
                             </tr>
                         </thead>

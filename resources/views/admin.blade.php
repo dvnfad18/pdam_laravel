@@ -43,26 +43,33 @@
 
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th class="col-md-1">ID</th>
-                            <th class="col-md-3">Username</th>
-                            <th class="col-md-2">Nama</th>
-                            <th class="col-md-2">No Telepon</th>
-                            <th class="col-md-2">Action</th>
+                        <tr style="background-color: rgb(196, 215, 243)">
+                            <th class="col-md-1">Id</th>
+                            <th class="col-md-1">Username</th>
+                            <th class="col-md-1">Nama</th>
+                            <th class="col-md-1">No Telepon</th>
+                            <th class="col-md-1">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($data->count() > 0)
                             @foreach ($data as $item)
-                                <tr>
+                                <tr >
                                     {{-- <th scope="item">{{$item}}</th> --}}
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->username }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->noTelp }}</td>
                                     <td>
-                                        <a href="/pdam/tampildata/{{ $item->id}}" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="/pdam/delete/{{ $item->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="/pdam/tampildata/{{ $item->id}}"  >
+                                            <img src="/icon/menuicon/edit.png" style="max-height: 20px; max-width: 20px">
+                                        </a>
+                                        <a href="/pdam/delete/{{ $item->id }}" >
+                                            <img src="/icon/menuicon/delete.png" style="max-height: 20px; max-width: 20px">
+                                        </a>
+                                        
+                                        {{-- <a href="/pdam/tampildata/{{ $item->id}}" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="/pdam/delete/{{ $item->id }}" class="btn btn-danger btn-sm">Delete</a> --}}
                                     </td>
                                 </tr>
                             @endforeach
