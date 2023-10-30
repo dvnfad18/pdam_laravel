@@ -92,11 +92,81 @@ public function destroy($idCustomer)
         }
 
         $token = $user->createToken('API Token')->plainTextToken;
-
         return response()->json([
             'access_token' => $token,
             'message' => 'Berhasil Login'
         ], 200);
+    }
+
+    public function getUserById(Request $request)
+    {
+        $idCustomer = $request->input('idCust');
+    
+        $customer = DB::table('customers')
+            ->where('idCust', $idCustomer)
+            ->first();
+    
+        if ($customer) {
+            $response = array(
+                'idCust' => $customer->idCust,
+                'namaCust' => $customer->namaCust,
+                'email_Cust' => $customer->email_Cust,
+                'no_telp' => $customer->no_telp,
+                'alamat' => $customer->alamat,
+                'gambar' => $customer->gambar
+            );
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            );
+        }
+    
+        return response()->json($response);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $idCustomer = $request->input('idCust');
+        $profileImage = $request->file('gambar');
+    
+        // Validasi jika gambar profil ada
+        if ($request->hasFile('gambar')) {
+            $destinationPath = 'images/';
+            $profileImageName = date('YmdHis') . "." . $profileImage->getClientOriginalExtension();
+            $profileImage->move($destinationPath, $profileImageName);
+            $profileImageUrl = "images/" . $profileImageName;
+    
+            // Update profil pengguna dengan gambar profil baru
+            $updateProfile = DB::table('customers')
+                ->where('idCust', $idCustomer)
+                ->update([
+                    'gambar' => $profileImageUrl
+                ]);
+    
+            if ($updateProfile) {
+                $response = array(
+                
+                        'idCust' => $idCustomer,
+                        'gambar' => $profileImageUrl
+                   
+                );
+                return response()->json($response);
+            } else {
+                $response = array(
+                    'success' => false,
+                    'message' => 'Failed to update profile',
+                );
+                return response()->json($response);
+            }
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'No profile image found',
+            );
+            return response()->json($response);
+        }
     }
 
 }

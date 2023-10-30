@@ -51,6 +51,8 @@ Route::get('/cust', [CustController::class, 'index']);
 Route::post('/cust/insert', [CustController::class, 'store']);
 Route::post('/cust/{idCust}', [CustController::class, 'update']);
 Route::delete('/cust/del/{idCust}', [CustController::class, 'destroy']);
+Route::post('getUserById', [CustController::class, 'getUserById']);
+Route::post('updateProfile', [CustController::class, 'updateProfile']);
 // ===================== CUST ROUTE END=================
 
 // ===================== TRANSAKSI ROUTE START================= 
