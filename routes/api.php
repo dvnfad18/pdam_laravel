@@ -53,6 +53,12 @@ Route::post('/trans/{idTrans}', [TransaksiController::class, 'update']);
 Route::delete('/trans/del/{idTrans}', [TransaksiController::class, 'destroy']);
 // ===================== TRANSAKSI ROUTE END=================
 
+// ===================== KATEGORI ROUTE START================= 
+Route::get('/kategori', [KategoriiController::class, 'index']);
+Route::post('/kategori/insert', [KategoriiController::class, 'store']);
+Route::post('/kategori/{idKategori}', [KategoriiController::class, 'update']);
+Route::delete('/kategori/del/{idKategori}', [KategoriiController::class, 'destroy']);
+// ===================== KATEGORI ROUTE END=================
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
