@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\FavoritController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -32,6 +34,8 @@ Route::get('/asets', [AsetController::class, 'index']);
 Route::post('/asets/insert', [AsetController::class, 'store']);
 Route::post('/asets/{idAset}', [AsetController::class, 'update']);
 Route::delete('/asets/del/{idAset}', [AsetController::class, 'destroy']);
+Route::get('/getDetilAset', [DetailController::class, 'index']);
+Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
 // ===================== ASET ROUTE END=================
 
 // ===================== CUST ROUTE START================= 
