@@ -35,8 +35,15 @@ Route::post('/asets/insert', [AsetController::class, 'store']);
 Route::post('/asets/{idAset}', [AsetController::class, 'update']);
 Route::delete('/asets/del/{idAset}', [AsetController::class, 'destroy']);
 Route::get('/getDetilAset', [DetailController::class, 'index']);
-Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
+// Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
 // ===================== ASET ROUTE END=================
+
+// ===================== Fav ROUTE START================= 
+Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
+Route::get('/addDataBarangFav', [FavoritController::class, 'update']);
+Route::get('/deleteDataBarangFav', [FavoritController::class, 'destroy']);
+// ===================== Fav ROUTE END=================
+
 
 // ===================== CUST ROUTE START================= 
 Route::post('/login', [CustController::class, 'login']);
