@@ -41,14 +41,14 @@
                     @endif
                 </div>
 
-                <table class="table table-striped">
+                <table class="table-responsive">
                     <thead>
                         <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">Id</th>
-                            <th class="col-md-1">Username</th>
-                            <th class="col-md-1">Nama</th>
-                            <th class="col-md-1">No Telepon</th>
-                            <th class="col-md-1">Action</th>
+                            <th class="col-md-2">Username</th>
+                            <th class="col-md-2">Nama</th>
+                            <th class="col-md-2">No Telepon</th>
+                            <th class="col-md-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>

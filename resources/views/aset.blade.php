@@ -40,10 +40,11 @@
                     @endif
                 </div>
 
-                <table class="table-responsive" style="border: 5px"  >
-                    <thead>
+                <table class="table-responsive" s  >
+                    <thead >
                         <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
+                            <th class="col-md-2">Gambar</th>
                             <th class="col-md-2">Nama Aset</th>
                             <th class="col-md-2">Deskripsi</th>
                             <th class="col-md-2">Alamat</th>
@@ -58,12 +59,12 @@
                             <tr >
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
+                                <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>
                                 <td>{{ $item->nama_aset }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->alamat_aset }}</td>
                                 <td>{{ $item->tipe }}</td>
                                 <td>{{ $item->kategori }}</td>
-                                {{-- <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"></td> --}}
                                 <td>{{ $item->harga }}</td>
                                 <td>
                                     <a href="/pdam/asettampildata/{{ $item->idAset }}"  >

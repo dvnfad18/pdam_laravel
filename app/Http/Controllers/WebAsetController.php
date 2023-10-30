@@ -19,6 +19,7 @@ class WebAsetController extends Controller
     {
         if ($request->has('search')) {
             $data = Aset::where('nama_aset', 'LIKE', '%' . $request->search . '%')->paginate(5);
+
         } else {
             $data = DB::select('CALL GetAsetData()');
         }
