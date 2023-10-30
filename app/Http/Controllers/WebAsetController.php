@@ -42,6 +42,7 @@ class WebAsetController extends Controller
             'harga' => 'required',
             'image' => 'image|file|max:50000',
             'kategori' => 'required',
+            'deskripsi' => 'required',
         ]);
         $data['gambar'] = $request->file('image')->store('gambar-aset');
         Aset::create($data);

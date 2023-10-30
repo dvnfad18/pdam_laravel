@@ -38,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="mb-3 row" style="display: none">
                         <label for="idAset" class="col-sm-2  col-form-label">id Aset</label>
                         <div class="col-sm-10">
@@ -45,6 +46,7 @@
                                 value="{{ $data->idAset }}">
                         </div>
                     </div>
+
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
@@ -52,6 +54,15 @@
                                 value="{{ $data->nama_aset }}">
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label for="nama" class="col-sm-2 col-form-label">Deskripsi</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name='deskripsi' id="nama"
+                                value="{{ $data->deskripsi }}">
+                        </div>
+                    </div>
+                    
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">

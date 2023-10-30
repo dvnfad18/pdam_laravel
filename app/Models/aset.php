@@ -15,5 +15,6 @@ class aset extends Model
         'tipe',
         'harga',
         'gambar',
-        'kategori'
+        'kategori',
+        'deskripsi',
     ];}

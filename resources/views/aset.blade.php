@@ -17,7 +17,6 @@
             <!-- START DATA -->
             <div class="my-3 p-3 bg-body rounded shadow-sm">
 
-
                 <!-- TOMBOL TAMBAH DATA -->
                 <div class="pb-2">
                     <a href='asettambah' class="btn btn-primary">+ Tambah Data</a>
@@ -41,18 +40,17 @@
                     @endif
                 </div>
 
-                <table class="table table-striped"  >
+                <table class="table-responsive" style="border: 5px"  >
                     <thead>
                         <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">id</th>
-                            <th class="col-md-1">nama aset</th>
-                            <th class="col-md-1">alamat</th>
-                            <th class="col-md-1">tipe</th>
-                            <th class="col-md-1">kategori</th>
-                            <th class="col-md-1">harga</th>
-                            <th class="col-md-1">action</th>
-                         
-                            
+                            <th class="col-md-2">Nama Aset</th>
+                            <th class="col-md-2">Deskripsi</th>
+                            <th class="col-md-2">Alamat</th>
+                            <th class="col-md-2">Tipe</th>
+                            <th class="col-md-2">Kategori</th>
+                            <th class="col-md-2">Harga</th>
+                            <th class="col-md-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,6 +59,7 @@
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
                                 <td>{{ $item->nama_aset }}</td>
+                                <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->alamat_aset }}</td>
                                 <td>{{ $item->tipe }}</td>
                                 <td>{{ $item->kategori }}</td>
