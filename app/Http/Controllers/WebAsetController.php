@@ -18,14 +18,21 @@ class WebAsetController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Aset::where('nama_aset', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = DB::select('CALL GetAsetData()');
-        }
-        // dd($data);
-        return view('aset', compact('data'));
 
+        $data = DB::select('CALL GetAsetData()');
+
+        $searchTerm = $request->search;
+
+        $data = array_filter($data, function($item) use ($searchTerm) {
+            return strpos($item->nama_aset, $searchTerm) !== false || strpos($item->kategori, $searchTerm) !== false
+            || strpos($item->tipe, $searchTerm) !== false;
+        });
+
+        $data = array_slice($data, 0, 5);
+
+        $data = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), 5);
+
+        return view('aset', ['data' => $data]);
     }
     public function tambah()
     {
@@ -53,14 +60,13 @@ class WebAsetController extends Controller
 
     public function tampil($idAset)
     {
+      
         $data = Aset::find($idAset);
         $tipe = tipeAset::all();
-        // $tipe_terpilih = tipeAset::where('tipe', $inputanUser)->first(); // Anda dapat mengganti ini sesuai dengan cara Anda mendapatkan data terpilih
         $kategori = kategori::all();
         return view('asettampildata', compact('data','tipe','kategori'));
-
     }
-
+    
     public function update(Request $request, $idAset)
     {
         $validatedData = $request->validate([
