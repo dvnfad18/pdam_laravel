@@ -138,6 +138,26 @@
             </div>
           </div>
         </div>
-        @endsection
+       
+        {{-- <div class="col-lg-5">
+          <div class="card z-index-9 h-100">
+              <div class="card-header">
+                <img src="/icon/Pose.png" style="max-height: 300px; max-width: 400px; justify-content: center; background-size: cover; align-items: center;" >
+              </div>
+              </div>
+            </div>
+          </div>
+        </div> --}}
+
+        <div class="col-lg-5" >
+          <div class="card z-index-9 h-100 d-flex justify-content-center align-items-center">
+            <div class="card-header" >
+              <img src="/icon/Pose.png" style="max-height: 300px; max-width: 400px; object-fit: cover;" >
+              <p class="text-center text-black">Selamat datang admin!!</p>
+            </div>
+          </div>
+        </div>
+        
+          @endsection
 
        

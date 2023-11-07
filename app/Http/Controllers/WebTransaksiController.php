@@ -18,11 +18,36 @@ class WebTransaksiController extends Controller
 
 public function prosedur(Request $request)
 {
-    if($request->has('search')){
-                $results = Transaksi::where('namaCust', 'LIKE', '%'.$request->search.'%');
-            }else{
-    $results = DB::select('CALL GetTransactionDetails()');}
-    return view('transaksi', compact('results'));
+$data = DB::select('CALL GetTransactionDetails()');
+
+$searchTerm = $request->search;
+
+$data = array_filter($data, function($item) use ($searchTerm) {
+    return strpos($item->namaCust, $searchTerm) !== false || strpos($item->nama_aset, $searchTerm) !== false
+    || strpos($item->status, $searchTerm) !== false;
+});
+
+$data = array_slice($data, 0, 5);
+
+$data = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), 5);
+
+return view('transaksi', ['data' => $data]);
 }
 
+// if($request->has('search')){
+//     $results = Transaksi::where('namaCust', 'LIKE', '%'.$request->search.'%');
+// }else{
+// $results = DB::select('CALL GetTransactionDetails()');}
+// return view('transaksi', compact('results'));
+
+// if ($request->has('search')) {
+//     $data = Aset::where(function($query) use ($request) {
+//         $query->where('nama_aset', 'LIKE', '%' . $request->search . '%')
+//               ->orWhere('alamat_aset', 'LIKE', '%' . $request->search . '%');
+//     })->paginate(5);
+// } else {
+//     $data = DB::select('CALL GetAsetData()');
+// }
+
+// return view('aset', compact('data'));
 }

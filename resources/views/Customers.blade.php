@@ -19,37 +19,42 @@
             <div class="my-3 p-3 bg-body rounded shadow-sm">
 
                     <!-- FORM PENCARIAN -->
-                    <div class="row g-3 align-items-center">
+                    {{-- <div class="row g-3 align-items-center">
                       <div class="col-auto">
                         <form action="/pdam/customers" method="GET">
                           <input type="search" id="input" name="search" class="-control" aria-describedby="password">
                         </form>
                       </div>
-                    </div>
-                    
-                    {{-- <div class="pb-2">
-                      @if($message = Session::get('success'))
-                       <div class="alert alert-succes" role="alert" >
-                        {{$message}}
-                       </div>
-                      @endif
                     </div> --}}
                     
-                    <table class="table table-striped">
-                        <thead>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <form action="/pdam/customers" method="GET">
+                              <div class="input-group">
+                              <input id="input" name="search" class="form-control"
+                                   placeholder="Search...">
+                              {{-- <button type="submit" class="btn btn-primary">Search </button> --}}
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead style="font-size: 10pt">
                             <tr style="background-color: rgb(196, 215, 243)">
-                                <th class="col-md-1">id</th>
-                                <th class="col-md-1">nama</th>
-                                <th class="col-md-1">no_telp</th>
-                                <th class="col-md-1">email</th>
-                                <th class="col-md-1">alamat</th>
+                                <th class="col-md-1">Id</th>
+                                <th class="col-md-2">Nama</th>
+                                <th class="col-md-2">No_telp</th>
+                                <th class="col-md-2">Email</th>
+                                <th class="col-md-2">Alamat</th>
                                 {{-- <th class="col-md-2">Action</th> --}}
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-bordered">
                           @if($data->count() > 0)
                           @foreach($data as $item)
-                          <tr>
+                          <tr style="font-size: 10pt">
                             {{-- <th scope="item">{{$item}}</th> --}}
                            <td>{{$item->idCust}}</td>
                            <td>{{$item->namaCust}}</td>
@@ -68,6 +73,7 @@
                         </tbody>
                     </table>
                     {{$data->links()}}
+                  </div>
               </div>
               <!-- AKHIR DATA -->
         </main>

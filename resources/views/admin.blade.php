@@ -15,7 +15,7 @@
     <body class="bg-light">
         <main class="container">
             <!-- START DATA -->
-            <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
 
 
                 <!-- TOMBOL TAMBAH DATA -->
@@ -24,11 +24,23 @@
                 </div>
 
                 <!-- FORM PENCARIAN -->
-                <div class="row g-3 align-items-center">
+                {{-- <div class="row g-3 align-items-center">
                     <div class="col-auto">
                         <form action="/pdam/admin" method="GET">
                             <input type="search" id="input" name="search" class="form-control"
                                 aria-describedby="password">
+                        </form>
+                    </div>
+                </div> --}}
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <form action="/pdam/admin" method="GET">
+                            <div class="input-group">
+                            <input id="input" name="search" class="form-control"
+                                 placeholder="Search...">
+                            {{-- <button type="submit" class="btn btn-primary">Search </button> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -40,9 +52,10 @@
                         </div>
                     @endif
                 </div>
-
-                <table class="table-responsive">
-                    <thead>
+            
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead style="font-size: 10pt">
                         <tr style="background-color: rgb(196, 215, 243)">
                             <th class="col-md-1">Id</th>
                             <th class="col-md-2">Username</th>
@@ -51,10 +64,10 @@
                             <th class="col-md-2">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-bordered">
+                    <tbody class="table-bordered dataTable">
                         @if ($data->count() > 0)
                             @foreach ($data as $item)
-                                <tr >
+                                <tr style="font-size: 10pt" >
                                     {{-- <th scope="item">{{$item}}</th> --}}
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->username }}</td>
@@ -79,7 +92,10 @@
                     </tbody>
                 </table>
                 {{ $data->links() }}
+             
             </div>
+        </div>
+        
             <!-- AKHIR DATA -->
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

@@ -10,14 +10,14 @@
     </nav>
 @endsection
 
-<style>
+{{-- <style>
     .centered {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 50vh
     }
-</style>
+</style> --}}
 
 @section('content')
 

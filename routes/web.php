@@ -88,6 +88,7 @@ Route::group(['prefix' => 'pdam', 'middleware' => ['auth'], 'as' => 'admin.'], f
     // Route::get('/countcustomers', [WebCustomerController::class, 'count'])->name('countcustomers');
 
     Route::get('/transaksi', [WebTransaksiController::class, 'prosedur'])->name('transaksi');
+    // Route::get('/indextransaksi', [WebTransaksiController::class, 'index'])->name('indextransaksi');
 
     Route::get('/profile', [WebProfileController::class, 'page'])->name('PageProfile');
 

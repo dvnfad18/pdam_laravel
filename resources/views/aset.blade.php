@@ -23,14 +23,19 @@
                 </div>
 
                 <!-- FORM PENCARIAN -->
-                <div class="row g-3 align-items-center">
-                    <div class="col-3">
+              
+                <div class="col-md-3">
+                    <div class="form-group">
                         <form action="/pdam/aset" method="GET">
-                            <input type="search" id="input" name="search" class="form-control"
-                                aria-describedby="password" text="search">
+                            <div class="input-group">
+                            <input id="input" name="search" class="form-control"
+                                 placeholder="Search...">
+                            {{-- <button type="submit" class="btn btn-primary">Search </button> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
+                
 
                 <div class="pb-2">
                     @if ($message = Session::get('success'))
@@ -41,11 +46,11 @@
                 </div>
 
                 {{-- "table table-bordered dataTable" --}}
-
-                <table class="table-responsive"  >
+             <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0"  >
                     <thead style="font-size: 10pt">
                         <tr style="background-color: rgb(196, 215, 243)">
-                            <th class="col-md-1">id</th>
+                            <th class="col-md-1"3>id</th>
                             <th class="col-md-2">Gambar</th>
                             <th class="col-md-1">Nama Aset</th>
                             <th class="col-md-2">Deskripsi</th>
@@ -82,6 +87,7 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
             </div>
             <!-- AKHIR DATA -->
         </main>

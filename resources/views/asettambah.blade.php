@@ -70,7 +70,7 @@
                         <label for="image" class="col-sm-2 col-form-label">Unggah Gambar</label>
                         <img class="img-preview img-fluid">
                         <div class="col-sm-10">
-                            <input class="form-control" name="image" type="file" id="image" onchange="preImage()">
+                            <input class="form-control" name="image" type="file" id="image" onchange="preImage()" width="50px" height="50px">
                             @error('image')
                                 <div class="invalid-feedback">
                                     {{ $message }}

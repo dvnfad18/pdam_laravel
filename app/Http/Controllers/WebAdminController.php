@@ -18,6 +18,8 @@ public function index(Request $request)
     }else{
     $data = User::paginate(5); }
     return view('admin', compact('data'));
+
+    
     
 }
 public function tambah()

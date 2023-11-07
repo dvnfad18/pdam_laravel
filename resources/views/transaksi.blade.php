@@ -138,14 +138,25 @@
             <div class="my-3 p-3 bg-body rounded shadow-sm">
 
                     <!-- FORM PENCARIAN -->
-                    <div class="row g-3 align-items-center">
+                    {{-- <div class="row g-3 align-items-center">
                       <div class="col-auto">
                         <form action="/transaksi" method="GET">
                           <input type="search" id="input" name="search" class="-control" aria-describedby="password">
                         </form>
                       </div>
-                    </div>
+                    </div> --}}
                     
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <form action="/pdam/transaksi" method="GET">
+                              <div class="input-group">
+                              <input id="input" name="search" class="form-control"
+                                   placeholder="Search...">
+                              {{-- <button type="submit" class="btn btn-primary">Search </button> --}}
+                              </div>
+                          </form>
+                      </div>
+                  </div>
                     {{-- <div class="pb-2">
                       @if($message = Session::get('success'))
                        <div class="alert alert-succes" role="alert" >
@@ -153,8 +164,9 @@
                        </div>
                       @endif
                     </div> --}}
-                    
-                    <table class="table-responsive">
+                  
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
                         <thead style="font-size: 10pt">
                             <tr style="background-color: rgb(196, 215, 243)">
                                 <th class="col-md-1">Id</th>
@@ -175,8 +187,8 @@
                         </thead>
                         <tbody class="table-bordered">
                           
-                          @foreach ($results as $result)
-                        <tr>
+                          @foreach ($data as $result)
+                        <tr style="font-size: 10pt">
                           <td>{{$result->idTrans}}</td>
                           <td>{{$result->namaCust}}</td>
                           <td>{{$result->nama_aset}}</td>
@@ -196,6 +208,7 @@
                         </tbody>
                     </table>
                     {{-- {{$result->links()}} --}}
+                  </div>
               </div>
               <!-- AKHIR DATA -->
         </main>

@@ -75,7 +75,7 @@
 
           <li class="nav-item">
             <a class="nav-link" href="{{route('admin.actionlogout')}}">
-              <img  src="/icon/menuicon/sign-out.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
+              <img src="/icon/menuicon/sign-out.png" class="navbar-brand-img h-50 text-center me-2 " alt="main_logo"
               style="max-height: 30px; max-width: 25px">
               <span class="nav-link-text ms-1">Sign Out</span>
             </a>

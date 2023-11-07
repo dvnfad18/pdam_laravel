@@ -17,6 +17,8 @@ class WebCustomerController extends Controller
     $data = Customer::paginate(5); }
     return view('Customers', compact('data'));
 
+    
+
     // if($request->has('search')){
     //     $data = Admin::where('username', 'LIKE', '%'.$request->search.'%')->paginate(5);
     // }else{
