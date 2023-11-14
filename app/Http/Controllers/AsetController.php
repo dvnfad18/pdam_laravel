@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Aset;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
 class AsetController extends Controller
@@ -60,4 +61,44 @@ public function destroy($idAset)
 
 
 }
+
+public function getDataAset(Request $request)
+{
+    $idCust = $request->input('idCust');
+
+    $asets = Aset::all();
+
+    if ($asets->isEmpty()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'No data found',
+            'data' => null
+        ]);
+    } else {
+        $response = $asets->toArray();
+
+        // Fetch the like data for the given customer ID
+        $likes = Like::whereIn('idCust', $asets->pluck('idCust'))
+                     ->where('idCust', $idCust)
+                     ->orderBy('created_at', 'desc')
+                     ->get();
+
+        // Add like status to each barang in the response
+        foreach ($response as &$aset) {
+            // Check if 'idCust' exists in the $aset array before accessing it
+            if (array_key_exists('idCust', $aset)) {
+                // Check if 'idCust' exists in the $likes collection
+                $aset['is_liked'] = $likes->contains('idCust', $aset['idCust']);
+            } else {
+                // Handle the case where 'idCust' is not present in the $aset array
+                $aset['is_liked'] = false;
+            }
+        }
+    }
+
+    return response()->json($response);
+}
+
+
+
 }

@@ -16,4 +16,5 @@ class customer extends Model
         'email_Cust',
         'password_Cust',
         'alamat' ];
+
 }

@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class aset extends Model
 {
+    public $table = "asets";
     use HasFactory;
-    protected $primaryKey = 'idAset';
+    
     protected $fillable = [
         'nama_aset',
         'alamat_aset',
@@ -17,4 +18,12 @@ class aset extends Model
         'gambar',
         'kategori',
         'deskripsi',
-    ];}
+    ];
+
+    protected $primaryKey = 'idAset';
+
+    public function kategori()
+    {
+        return $this->belongsTo(kategori::class, 'idKategori');
+    }
+}

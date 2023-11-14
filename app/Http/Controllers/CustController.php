@@ -100,10 +100,10 @@ public function destroy($idCustomer)
 
     public function getUserById(Request $request)
     {
-        $idCustomer = $request->input('idCust');
+        $idCust = $request->input('idCust');
     
         $customer = DB::table('customers')
-            ->where('idCust', $idCustomer)
+            ->where('idCust', $idCust)
             ->first();
     
         if ($customer) {
@@ -128,7 +128,7 @@ public function destroy($idCustomer)
 
     public function updateProfile(Request $request)
     {
-        $idCustomer = $request->input('idCust');
+        $idCust = $request->input('idCust');
         $profileImage = $request->file('gambar');
     
         // Validasi jika gambar profil ada
@@ -140,7 +140,7 @@ public function destroy($idCustomer)
     
             // Update profil pengguna dengan gambar profil baru
             $updateProfile = DB::table('customers')
-                ->where('idCust', $idCustomer)
+                ->where('idCust', $idCust)
                 ->update([
                     'gambar' => $profileImageUrl
                 ]);
@@ -148,7 +148,7 @@ public function destroy($idCustomer)
             if ($updateProfile) {
                 $response = array(
                 
-                        'idCust' => $idCustomer,
+                        'idCust' => $idCust,
                         'gambar' => $profileImageUrl
                    
                 );

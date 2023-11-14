@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\CustController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\KategoriiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,18 +31,18 @@ Route::delete('/admins/del/{idAdmin}', [AdminController::class, 'destroy']);
 // ===================== ADMIN ROUTE END=================
 
 // ===================== ASET ROUTE START================= 
-Route::get('/asets', [AsetController::class, 'index']);
+Route::post('/asets', [AsetController::class, 'index']);
 Route::post('/asets/insert', [AsetController::class, 'store']);
 Route::post('/asets/{idAset}', [AsetController::class, 'update']);
 Route::delete('/asets/del/{idAset}', [AsetController::class, 'destroy']);
 Route::get('/getDetilAset', [DetailController::class, 'index']);
-// Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
+Route::post('/getDataAset', [AsetController::class, 'getDataAset']);
 // ===================== ASET ROUTE END=================
 
 // ===================== Fav ROUTE START================= 
-Route::get('/getDataBarangFav', [FavoritController::class, 'index']);
-Route::get('/addDataBarangFav', [FavoritController::class, 'update']);
-Route::get('/deleteDataBarangFav', [FavoritController::class, 'destroy']);
+Route::post('/getDataAsetFav', [FavoritController::class, 'getDataAsetFav']);
+Route::post('/addDataFavorit', [FavoritController::class, 'addDataFavorit']);
+Route::post('/deleteDataBarangFav', [FavoritController::class, 'destroy']);
 // ===================== Fav ROUTE END=================
 
 
@@ -51,8 +52,8 @@ Route::get('/cust', [CustController::class, 'index']);
 Route::post('/cust/insert', [CustController::class, 'store']);
 Route::post('/cust/{idCust}', [CustController::class, 'update']);
 Route::delete('/cust/del/{idCust}', [CustController::class, 'destroy']);
-Route::post('getUserById', [CustController::class, 'getUserById']);
-Route::post('updateProfile', [CustController::class, 'updateProfile']);
+Route::post('/getUserById', [CustController::class, 'getUserById']);
+Route::post('/updateProfile', [CustController::class, 'updateProfile']);
 // ===================== CUST ROUTE END=================
 
 // ===================== TRANSAKSI ROUTE START================= 
@@ -63,7 +64,7 @@ Route::delete('/trans/del/{idTrans}', [TransaksiController::class, 'destroy']);
 // ===================== TRANSAKSI ROUTE END=================
 
 // ===================== KATEGORI ROUTE START================= 
-Route::get('/kategori', [KategoriiController::class, 'index']);
+Route::post('/kategori', [KategoriiController::class, 'index']);
 Route::post('/kategori/insert', [KategoriiController::class, 'store']);
 Route::post('/kategori/{idKategori}', [KategoriiController::class, 'update']);
 Route::delete('/kategori/del/{idKategori}', [KategoriiController::class, 'destroy']);

@@ -66,7 +66,7 @@
                             <tr style="font-size: 10pt">
                                 {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
-                                <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>
+                                <td><img src="{{ asset('storage/app/public/gambar-aset'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>
                                 <td>{{ $item->nama_aset }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->alamat_aset }}</td>

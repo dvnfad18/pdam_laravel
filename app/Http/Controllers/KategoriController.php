@@ -14,9 +14,9 @@ class KategoriController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $data = Kategori::where('kategori', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $data = kategori::where('kategori', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
-            $data = Kategori::paginate(5); 
+            $data = kategori::paginate(5); 
         }
         // dd($data);
         return view('kategori', compact('data'));
@@ -36,20 +36,20 @@ class KategoriController extends Controller
            
         ]);
         $validatedData['kategori'] = $request->kategori;
-        Kategori::create($data);
+        kategori::create($data);
         return redirect()->route('admin.kategori')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     public function tampil($idKategori)
     {
-        $data = Kategori::find($idKategori);
+        $data = kategori::find($idKategori);
         return view('kategoritampil', compact('data'));
 
     }
 
     public function update(Request $request, $idKategori)
     {
-        $data = Kategori::find($idKategori);
+        $data = kategori::find($idKategori);
         $data->update($request->all());
         return redirect()->route('admin.kategori')->with('success', 'Data Berhasil Di Update');
 
@@ -57,7 +57,7 @@ class KategoriController extends Controller
 
     public function delete($idKategori)
     {
-        $data = Kategori::find($idKategori);
+        $data = kategori::find($idKategori);
         $data->delete();
         return redirect()->route('admin.kategori')->with('success', 'Data Berhasil Di  Hapus');
 
@@ -66,7 +66,7 @@ class KategoriController extends Controller
     public function dropdown()
     {
 
-        $data = Kategori::all();
+        $data = kategori::all();
         // $kategori = kategori::all();
         return view('kategoritambah', compact('data'));
     }
