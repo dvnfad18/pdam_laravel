@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('kategoris', function (Blueprint $table) {
+        Schema::create('paymen', function (Blueprint $table) {
+            $table->id('id_paymen');
+            $table->string('jenis_paymen');
+            $table->string('no_paymen');
+            $table->string('icon');
             $table->timestamps();
         });
     }
@@ -21,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kategoris', function (Blueprint $table) {
-            $table->dropColumn('kategori');
-
-        });
+        Schema::dropIfExists('paymen');
     }
 };

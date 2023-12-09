@@ -15,6 +15,20 @@ class customer extends Model
         'no_telp',
         'email_Cust',
         'password_Cust',
-        'alamat' ];
+        'alamat',
+        'gambar',
+    ];
+
+    // protected $primaryKey = 'idCust';
+
+    public function setPasswordAttribute($value)
+    {
+    $this->attributes['password_Cust'] = bcrypt($value);
+    }
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'idCust');
+    }
 
 }

@@ -26,4 +26,9 @@ class aset extends Model
     {
         return $this->belongsTo(kategori::class, 'idKategori');
     }
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'idAset');
+    }
 }
