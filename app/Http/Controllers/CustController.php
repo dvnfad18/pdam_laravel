@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Validator;
-
+use Auth;
 class CustController extends Controller
 {
     public function index() 
@@ -15,39 +15,39 @@ class CustController extends Controller
     return response()->json(['data' => $cust]);
     }
 
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
     
-    $validatedData = Validator::make($request->all(),[
-        'namaCust' => 'required|string',
-        'no_telp' => 'required|string',
-        'email_Cust' => 'required|email',
-        'password_Cust' => 'required|string',
-        'alamat' => 'required|string'
-    ]);
+    // $validatedData = Validator::make($request->all(),[
+    //     'namaCust' => 'required|string',
+    //     'no_telp' => 'required|string',
+    //     'email_Cust' => 'required|email',
+    //     'password_Cust' => 'required|string',
+    //     'alamat' => 'required|string'
+    // ]);
     
-    if($validatedData->fails()){
-        return response()->json([
-            'success'=>false,
-            'messages'=>'Ada Kesalahan',
-            'data'=>$validatedData->errors()
-        ]);
-    }
+    // if($validatedData->fails()){
+    //     return response()->json([
+    //         'success'=>false,
+    //         'messages'=>'Ada Kesalahan',
+    //         'data'=>$validatedData->errors()
+    //     ]);
+    // }
 
-    $cust = $request->all();
-    $cust['password_Cust'] = bcrypt($cust['password_Cust']);
-    $user = Customer::create($cust);
+    // $cust = $request->all();
+    // $cust['password_Cust'] = bcrypt($cust['password_Cust']);
+    // $user = Customer::create($cust);
 
-    $success['token']=$user->createToken('auth_token')->plainTextToken;
-    // $success['namaCust']=$user->name;
+    // $success['token']=$user->createToken('auth_token')->plainTextToken;
+    // // $success['namaCust']=$user->name;
 
-    return response()->json([
-        'success'=>true,
-        'message' => 'Customer created successfully', 
-        'data' => $cust, $success
-    ], 
-        201);
-    }   
+    // return response()->json([
+    //     'success'=>true,
+    //     'message' => 'Customer created successfully', 
+    //     'data' => $cust, $success
+    // ], 
+    //     201);
+    // }   
 
     public function update(Request $request, $idCustomer)
 {
@@ -85,84 +85,63 @@ public function destroy($idCustomer)
 }
 
 public function register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email_Cust' => 'required|email|unique:customers,email_Cust',
-            'password_Cust' => 'required|min:6',
-            'namaCust' => 'required',
-            'no_telp' => 'required',
-            'alamat' => 'required',
-        ]);
-        
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
-        
-        // Validasi jika email sudah terdaftar sebelumnya
-        $existingCustomer = Customer::where('email_Cust', $email_Cust)->first();
+{
+    $validator = Validator::make($request->all(), [
+        'email_Cust' => 'required|email|unique:customers,email_Cust',
+        'password_Cust' => 'required|min:6',
+        'namaCust' => 'required',
+        'no_telp' => 'required',
+        'alamat' => 'required',
+    ]);
 
-        if ($existingCustomer) {
-            $response = [
-                'success' => false,
-                'message' => 'Email already registered',
-            ];
-            return response()->json($response);
-        }
+    if ($validator->fails()) {
+        return response()->json(['error' => $validator->errors()], 400);
+    }
 
-        // Menggunakan model Eloquent untuk menyimpan data
-        $customer = Customer::create([
-            'email_Cust' => $email_Cust,
-            'password_Cust' => $password_Cust,
-            'namaCust' => $namaCust,
-            'no_telp' => $no_telp,
-            'alamat' => $alamat,
-        ]);
+    // Validasi jika email sudah terdaftar sebelumnya
+    $existingCustomer = Customer::where('email_Cust', $request->input('email_Cust'))->first();
 
-        if ($customer) {
-            $response = [
-                'success' => true,
-                'message' => 'Registration successful',
-                'data' => $customer,
-            ];
-            return response()->json($response);
-        } else {
-            $response = [
-                'success' => false,
-                'message' => 'Registration failed',
-            ];
-            return response()->json($response);
-        }
-            
-                // Lakukan proses penyimpanan data customer ke database
-            
-                $customer = DB::table('customers')->insertGetId([
-                    'email_Cust' => $email_Cust,
-                    'password_Cust' => $password_Cust,
-                    'namaCust' => $namaCust,
-                    'no_telp' => $no_telp,
-                    'alamat' => $alamat
-                ]);
-                if ($customer) {
-                    $response = array(
-                        'success' => true,
-                        'message' => 'Registration successful',
-                        'data' => array(
-                            'idCust' => $customer,
-                            'namaCust' => $namaCust,
-                            'email_Cust' => $email_Cust,
-                            'no_telp' => $no_telp,
-                            'alamat' => $alamat
-                        )
-                    );
-                    return response()->json($response);
-                } else {
-                    $response = array(
-                        'success' => false,
-                        'message' => 'Registration failed',
-                    );
-                    return response()->json($response);
-                }
-            }
+    if ($existingCustomer) {
+        $response = [
+            'success' => false,
+            'message' => 'Email already registered',
+        ];
+        return response()->json($response);
+    }
+
+    // Password hashing
+    $hashedPassword = bcrypt($request->input('password_Cust'));
+
+    // Create the Customer model instance with hashed password
+    $customer = Customer::create([
+        'email_Cust' => $request->input('email_Cust'),
+        'password_Cust' => $hashedPassword,
+        'namaCust' => $request->input('namaCust'),
+        'no_telp' => $request->input('no_telp'),
+        'alamat' => $request->input('alamat'),
+    ]);
+
+    if ($customer) {
+        // Generate an access token for the registered user
+        $token = $customer->createToken('auth_token')->plainTextToken;
+
+        $response = [
+            'success' => true,
+            'message' => 'Registration successful',
+            'data' => $customer,
+            'token' => $token,
+        ];
+
+        return response()->json($response);
+    } else {
+        $response = [
+            'success' => false,
+            'message' => 'Registration failed',
+        ];
+
+        return response()->json($response);
+    }
+}
 
     public function login(Request $request)
     {
@@ -177,6 +156,24 @@ public function register(Request $request)
             'access_token' => $token,
             'message' => 'Berhasil Login'
         ], 200);
+
+        // if(Auth::guard('customers')->attempt(['email_Cust' => $request->email_Cust, 'password_Cust' => $request->password_Cust])){
+        //     $auth = $this->guard()->user();
+        //     $success['token']= $auth->createToken('auth_token')->plainTextToken;
+        //     $success['namaCust']= $auth->namaCust;
+
+        //     return response()->json([
+        //         'success'=>true,
+        //         'message'=>'login sukses',
+        //         'data'=>$success
+        //     ], 200);
+        // }else{
+        //     return response()->json([
+        //         'success'=>false,
+        //         'message'=>'Check Email dan Password',
+        //         'data'=>null
+        //     ]);
+        // }
     }
 
     

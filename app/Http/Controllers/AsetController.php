@@ -225,10 +225,10 @@ public function getDetilAset(Request $request)
 
     public function addDataKeranjang(Request $request)
     {
-        $data = $request->only(['idCust', 'idAset', 'qty']);
+        $data = $request->only(['idCust', 'idAset']);
     
         // Check if required fields are present
-        $requiredFields = ['idCust', 'idAset', 'qty'];
+        $requiredFields = ['idCust', 'idAset'];
         foreach ($requiredFields as $field) {
             if (!isset($data[$field]) || empty($data[$field])) {
                 return response()->json([

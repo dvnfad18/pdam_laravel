@@ -41,9 +41,10 @@ return [
             'provider' => 'users',
         ],
         'customers' => [
-            'driver' => 'sanctum',
+            'driver' => 'session',
             'provider' => 'customers',
         ],
+       
     ],
 
     /*
@@ -70,7 +71,7 @@ return [
         ],
         'customers' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Customer::class,
+            'model' => App\Models\Customer::class,
         ],
 
         // 'users' => [

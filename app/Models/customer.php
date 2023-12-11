@@ -3,13 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class customer extends Model
+
+class customer extends Authenticatable 
 {
     use HasFactory, HasApiTokens;
     protected $primaryKey = 'idCust';
+    protected $password = 'password_Cust';
     protected $fillable = [
         'namaCust',
         'no_telp',
@@ -17,6 +21,11 @@ class customer extends Model
         'password_Cust',
         'alamat',
         'gambar',
+    ];
+   
+    protected $hidden = [
+        'password_Cust',
+        'remember_token',
     ];
 
     // protected $primaryKey = 'idCust';
