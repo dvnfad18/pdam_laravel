@@ -9,6 +9,7 @@ use App\Http\Controllers\WebCustomerController;
 use App\Http\Controllers\WebTransaksiController;
 use App\Http\Controllers\WebProfileController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\HomeController;
 
 
@@ -29,22 +30,7 @@ Route::group(['prefix' => 'pdam', 'middleware' => ['auth'], 'as' => 'admin.'], f
 
     Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout');
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
-    // Route::get('/dashboard', [HomeController::class, 'count'])->name('dashboardcount');
-//     Route::get('template', function () {
-//     return view('template');
-// });
-
-    // Route::get('transaksi', function () {
-//     return view('transaksi');
-// })->name('transaksi');
-
-
-
-    // Route::get('aset', function () {
-//     return view('aset');
-// })->name('aset');
-
-    // Route::get('/admincount', [DashboardController::class, 'dashboard'])->name('admindashboard');
+    
 
     Route::get('/pageadmin', [WebAdminController::class, 'page'])->name('PageAdmin');
     Route::get('/admin', [WebAdminController::class, 'index'])->name('admins');

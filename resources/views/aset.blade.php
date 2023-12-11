@@ -30,13 +30,12 @@
                             <div class="input-group">
                             <input id="input" name="search" class="form-control"
                                  placeholder="Search...">
-                            {{-- <button type="submit" class="btn btn-primary">Search </button> --}}
-                            </div>
+                                </div>
+                                {{-- <button class="btn btn-success">Cari</button> --}}
                         </form>
                     </div>
                 </div>
                 
-
                 <div class="pb-2">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-succes" role="alert">
@@ -50,7 +49,7 @@
                 <table class="table align-items-center mb-0"  >
                     <thead style="font-size: 10pt">
                         <tr style="background-color: rgb(196, 215, 243)">
-                            <th class="col-md-1"3>id</th>
+                            <th class="col-md-2">id</th>
                             <th class="col-md-2">Gambar</th>
                             <th class="col-md-1">Nama Aset</th>
                             <th class="col-md-2">Deskripsi</th>
@@ -62,11 +61,11 @@
                         </tr>
                     </thead>
                     <tbody class="table-bordered dataTable">
+                        {{-- @if($data->count() > 0) --}}
                         @foreach ($data as $item)
                             <tr style="font-size: 10pt">
-                                {{-- <th scope="item">{{$item}}</th> --}}
                                 <td>{{ $item->idAset }}</td>
-                                <td><img src="{{ asset('storage/app/public/gambar-aset'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>
+                                <td><img src="{{ asset('storage/'. $item->gambar) }}" alt="Gambar"width="100" height="auto"></td>
                                 <td>{{ $item->nama_aset }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->alamat_aset }}</td>
@@ -85,8 +84,12 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {{-- @else
+                                <p>Tidak ada data.</p>
+                            @endif --}}
                     </tbody>
                 </table>
+                {{$data->links()}}
             </div>
             </div>
             <!-- AKHIR DATA -->

@@ -8,6 +8,7 @@ use App\Models\Aset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class WebAsetController extends Controller
 {
@@ -16,24 +17,49 @@ class WebAsetController extends Controller
         return redirect()->route('admin.aset');
     }
 
+    // public function index(Request $request)
+    // {
+
+    //     $data = DB::select('CALL GetAsetData()');
+
+    //     $searchTerm = $request->search;
+
+    //     $data = array_filter($data, function($item) use ($searchTerm) {
+    //         return strpos($item->nama_aset, $searchTerm) !== false || strpos($item->kategori, $searchTerm) !== false
+    //         || strpos($item->tipe, $searchTerm) !== false;
+    //     });
+
+    //     // $data = array_slice($data, 0, 5);
+        
+
+    //     $data = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), 5);
+
+    //     return view('aset', ['data' => $data]);
+    // }
+
     public function index(Request $request)
     {
+        // Ambil data dari stored procedure
+        $result = collect(DB::select('CALL GetAsetData()'));
 
-        $data = DB::select('CALL GetAsetData()');
+        $searchTerm = $request->input('search');
+        if ($searchTerm) {
+            $result = $result->filter(function ($item) use ($searchTerm) {
+                return strpos($item->nama_aset, $searchTerm) !== false ||
+                    strpos($item->kategori, $searchTerm) !== false ||
+                    strpos($item->tipe, $searchTerm) !== false;
+            });
+        }
 
-        $searchTerm = $request->search;
+        $perPage = 5; // Sesuaikan dengan jumlah item per halaman yang diinginkan
+        $currentPage = $request->query('page', 1);
+        $pagedData = $result->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $data = new \Illuminate\Pagination\LengthAwarePaginator($pagedData, count($result), $perPage, $currentPage);
+        $data->setPath('aset');
 
-        $data = array_filter($data, function($item) use ($searchTerm) {
-            return strpos($item->nama_aset, $searchTerm) !== false || strpos($item->kategori, $searchTerm) !== false
-            || strpos($item->tipe, $searchTerm) !== false;
-        });
-
-        $data = array_slice($data, 0, 5);
-
-        $data = new \Illuminate\Pagination\LengthAwarePaginator($data, count($data), 5);
-
-        return view('aset', ['data' => $data]);
+        return view('aset', compact('data'));
     }
+    
     public function tambah()
     {
         return view('asettambah');

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {{-- <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png"> --}}
@@ -21,6 +21,9 @@
     <!-- CSS Files -->
     <link id="pagestyle" link rel="stylesheet" href="{{ asset('style/assets/css/argon-dashboard.css?v=2.0.4') }}" />
 </head>
+
+
+<body class="g-sidenav-show bg-gray-100">
 
 {{-- Menu --}}
 @include('menu')
@@ -58,7 +61,7 @@
                     </a>
                 </li>
 
-                {{-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
                             <i class="sidenav-toggler-line bg-white"></i>
@@ -66,7 +69,7 @@
                             <i class="sidenav-toggler-line bg-white"></i>
                         </div>
                     </a>
-                </li> --}}
+                </li>
                 {{-- <li class="nav-item px-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-white p-0">
                         <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>

@@ -76,26 +76,25 @@ public function getDataAset(Request $request)
         ]);
     } else {
         $response = $asets->toArray();
-
         // Fetch the like data for the given customer ID
         $likes = Like::whereIn('idCust', $asets->pluck('idCust'))
                      ->where('idCust', $idCust)
                      ->orderBy('created_at', 'desc')
                      ->get();
-
-        // Add like status to each barang in the response
         foreach ($response as &$aset) {
             // Check if 'idCust' exists in the $aset array before accessing it
             if (array_key_exists('idCust', $aset)) {
                 // Check if 'idCust' exists in the $likes collection
                 $aset['is_liked'] = $likes->contains('idCust', $aset['idCust']);
+                
+                // Access the image property directly on the $aset object
+                $aset['gambar'] = $aset['image']; // Replace 'image' with your actual image field name
             } else {
                 // Handle the case where 'idCust' is not present in the $aset array
                 $aset['is_liked'] = false;
             }
         }
     }
-
     return response()->json($response);
 }
 

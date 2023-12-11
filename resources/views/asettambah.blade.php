@@ -70,7 +70,7 @@
                         <label for="image" class="col-sm-2 col-form-label">Unggah Gambar</label>
                         <img class="img-preview img-fluid">
                         <div class="col-sm-10">
-                            <input class="form-control" name="image" type="file" id="image" onchange="preImage()" width="50px" height="50px">
+                            <input class="form-control" name="image" type="file" id="image" onchange="preImage()" width="10px" height="10px">
                             @error('image')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -78,6 +78,17 @@
                             @enderror
                         </div>
                     </div>
+
+                    {{-- <div class="col-sm-10">
+                        <input class="form-control" name="image" type="file" id="imageInput" onchange="preImage()">
+                        <img id="previewImage" src="" width="1000px" height="100px">
+                        @error('image')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div> --}}
+
                     <div class="mb-3 row">
                         <label for="jurusan" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>

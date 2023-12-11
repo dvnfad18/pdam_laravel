@@ -26,4 +26,9 @@ class aset extends Model
     {
         return $this->belongsTo(kategori::class, 'idKategori');
     }
+    public function getImageAttribute($value)
+{
+    // Assuming your images are stored in a 'images' folder
+    return asset('gambar-aset/' . $value);
+}
 }

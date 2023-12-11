@@ -6,6 +6,8 @@ use Illuminate\Pagination\Paginator;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('paginator', function ($app, $data, $perPage) {
+            return new LengthAwarePaginator($data, count($data), $perPage);
+        });
     }
 
     /**
