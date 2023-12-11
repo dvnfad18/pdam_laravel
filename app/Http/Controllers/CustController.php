@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class CustController extends Controller
@@ -83,6 +84,86 @@ public function destroy($idCustomer)
 
 }
 
+public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email_Cust' => 'required|email|unique:customers,email_Cust',
+            'password_Cust' => 'required|min:6',
+            'namaCust' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        
+        // Validasi jika email sudah terdaftar sebelumnya
+        $existingCustomer = Customer::where('email_Cust', $email_Cust)->first();
+
+        if ($existingCustomer) {
+            $response = [
+                'success' => false,
+                'message' => 'Email already registered',
+            ];
+            return response()->json($response);
+        }
+
+        // Menggunakan model Eloquent untuk menyimpan data
+        $customer = Customer::create([
+            'email_Cust' => $email_Cust,
+            'password_Cust' => $password_Cust,
+            'namaCust' => $namaCust,
+            'no_telp' => $no_telp,
+            'alamat' => $alamat,
+        ]);
+
+        if ($customer) {
+            $response = [
+                'success' => true,
+                'message' => 'Registration successful',
+                'data' => $customer,
+            ];
+            return response()->json($response);
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Registration failed',
+            ];
+            return response()->json($response);
+        }
+            
+                // Lakukan proses penyimpanan data customer ke database
+            
+                $customer = DB::table('customers')->insertGetId([
+                    'email_Cust' => $email_Cust,
+                    'password_Cust' => $password_Cust,
+                    'namaCust' => $namaCust,
+                    'no_telp' => $no_telp,
+                    'alamat' => $alamat
+                ]);
+                if ($customer) {
+                    $response = array(
+                        'success' => true,
+                        'message' => 'Registration successful',
+                        'data' => array(
+                            'idCust' => $customer,
+                            'namaCust' => $namaCust,
+                            'email_Cust' => $email_Cust,
+                            'no_telp' => $no_telp,
+                            'alamat' => $alamat
+                        )
+                    );
+                    return response()->json($response);
+                } else {
+                    $response = array(
+                        'success' => false,
+                        'message' => 'Registration failed',
+                    );
+                    return response()->json($response);
+                }
+            }
+
     public function login(Request $request)
     {
         $user = Customer::where('email_Cust', $request->email)->first();
@@ -98,33 +179,32 @@ public function destroy($idCustomer)
         ], 200);
     }
 
+    
     public function getUserById(Request $request)
-    {
-        $idCust = $request->input('idCust');
-    
-        $customer = DB::table('customers')
-            ->where('idCust', $idCust)
-            ->first();
-    
-        if ($customer) {
-            $response = array(
-                'idCust' => $customer->idCust,
-                'namaCust' => $customer->namaCust,
-                'email_Cust' => $customer->email_Cust,
-                'no_telp' => $customer->no_telp,
-                'alamat' => $customer->alamat,
-                'gambar' => $customer->gambar
-            );
-        } else {
-            $response = array(
-                'success' => false,
-                'message' => 'User not found',
-                'data' => null
-            );
-        }
-    
-        return response()->json($response);
+{
+    $idCust = $request->input('idCust');
+
+    $customer = Customer::find($idCust);
+
+    if ($customer) {
+        $response = [
+            'idCust' => $customer->idCust,
+            'namaCust' => $customer->namaCust,
+            'email_Cust' => $customer->email_Cust,
+            'no_telp' => $customer->no_telp,
+            'alamat' => $customer->alamat,
+            'gambar' => $customer->gambar
+        ];
+    } else {
+        $response = [
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ];
     }
+
+    return response()->json($response);
+}
 
     public function updateProfile(Request $request)
     {

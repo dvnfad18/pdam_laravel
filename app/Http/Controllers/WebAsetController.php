@@ -77,8 +77,10 @@ class WebAsetController extends Controller
             'image' => 'image|file|max:50000',
             'kategori' => 'required',
             'deskripsi' => 'required',
+            'jumlah_aset' => 'required',
         ]);
         $data['gambar'] = $request->file('image')->store('gambar-aset');
+        $data['jumlah_aset'] = $request->has('jumlah_aset') ? $data['jumlah_aset'] : 0;
 
         Aset::create($data);
         return redirect()->route('admin.aset')->with('success', 'Data Berhasil Ditambahkan');
@@ -103,6 +105,7 @@ class WebAsetController extends Controller
             'image' => 'image|file|max:50000',
             'kategori' => 'required',
             'deskripsi' => 'required',
+            'jumlah_aset' => 'required',
         ]);
 
         // Find the Aset record with the specified ID
@@ -134,6 +137,7 @@ class WebAsetController extends Controller
         $aset->harga = $validatedData['harga'];
         $aset->kategori = $validatedData['kategori'];
         $aset->deskripsi = $validatedData['deskripsi'];
+        $aset->jumlah_aset = $validatedData['jumlah_aset'];
 
         // Save the changes
         $aset->save();

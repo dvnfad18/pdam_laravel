@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\favorit;
 use App\Models\Keranjang;
+use App\Models\Aset;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
 class FavoritController extends Controller
 {
     public function index()
     {
-        $asets = favorit::all(); // Retrieve all posts
+        $asets = Like::all(); // Retrieve all posts
         return response()->json(['data' => $asets]);
     }
 
@@ -23,7 +23,7 @@ class FavoritController extends Controller
         'jumlah_aset'=> 'required|int',
         'harga' => 'required|int',
         'dekripsi' => 'required|string',
-        'image' => 'image|file|max:50000',
+        'gambar' => 'gambar|file|max:50000',
     ]);
 
     $asets = Aset::create($validatedData);
@@ -67,9 +67,9 @@ public function getDataAsetFav(Request $request)
 {
     $idCust = $request->input('idCust');
 
-    $asets = aset::all();
+    $asetss = aset::all();
 
-    if ($asets->isEmpty()) {
+    if ($asetss->isEmpty()) {
         $response = array(
             'success' => false,
             'message' => 'No data found',
@@ -77,19 +77,19 @@ public function getDataAsetFav(Request $request)
         );
     } else {
         // Fetch the like data for the given customer ID
-        $likes = Like::where('idCust', $idCust)->whereIn('idAset', $Asets->pluck('idAset'))->get();
+        $likes = Like::where('idCust', $idCust)->whereIn('idAset', $asetss->pluck('idAset'))->get();
 
         // Filter barang-barang yang memiliki is_liked bernilai true
-        $likedAsets = $likes->pluck('idAset')->toArray();
+        $likedAsetss = $likes->pluck('idAset')->toArray();
 
         // Filter barang-barang yang memiliki is_liked bernilai true
-        $response = $asets->filter(function ($aset) use ($likedAsets) {
-            return in_array($aset['idAset'], $likedAsets);
+        $response = $asetss->filter(function ($asetss) use ($likedAsetss) {
+            return in_array($asetss['idAset'], $likedAsetss);
         })->values()->toArray();
 
         // Tambahkan is_liked dengan nilai true pada setiap barang
-        foreach ($response as &$aset) {
-            $aset['is_liked'] = true;
+        foreach ($response as &$asetss) {
+            $asets['is_liked'] = true;
         }
     }
 
@@ -113,6 +113,30 @@ public function addDataFavorit(Request $request)
         $keranjang = Like::create($data);
     
         return response()->json($keranjang, 200);
+    }
+
+    public function deleteDataFavorit(Request $request)
+    {
+        $data = $request->only(['idCust', 'idAset']);
+    
+        // Check if required fields are present
+        $requiredFields = ['idCust', 'idAset'];
+        foreach ($requiredFields as $field) {
+            if (!isset($data[$field]) || empty($data[$field])) {
+                return response()->json([
+                    'error' => 'The ' . $field . ' field is required.'
+                ], 400);
+            }
+        }
+    
+        // Delete the favorit record
+        Like::where('idCust', $data['idCust'])
+            ->where('idAset', $data['idAset'])
+            ->delete();
+    
+        return response()->json([
+            'message' => 'The favorit record has been deleted successfully.'
+        ], 200);
     }
 
 }

@@ -5,28 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Keranjang extends Model
+class Beli extends Model
 {
-    public $table = "keranjang";
+    public $table = "beli";
+
     use HasFactory;
 
     protected $fillable = [
-        'idCust',
+        
+        'jumlah_beli',
+        'harga_beli',
         'idAset',
-        'qty',
-        'status',
         
     ];
-
-    protected $primaryKey = 'id_keranjang';
+    
+    protected $primaryKey = 'id';
 
     public function aset()
     {
         return $this->belongsTo(aset::class, 'idAset');
     }
 
-    public function customer()
-    {
-        return $this->belongsTo(customer::class, 'idCust');
-    }
 }
